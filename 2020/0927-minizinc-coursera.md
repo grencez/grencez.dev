@@ -1,5 +1,5 @@
 
-# Submitting a MiniZinc assignment in Coursera
+# Submitting a MiniZinc Coursera assignment
 
 Date: 2020-09-27
 
@@ -9,14 +9,14 @@ It was a challenge to run MiniZinc and also submit the assignment.
 To summarize the problems:
 
 * Gecode and MiniZinc would not easily build from source.
-  * It looks like `bison` generates a `parser.tab.cpp` that references a `parser.tab.hpp`, but these projects have build rules to rename that file with a `.hh` extension.
+  * It looks like `bison` generates a `parser.tab.cpp` that references a `parser.tab.hpp`, but these projects have build rules to rename the file to have a `.hh` extension.
   * I couldn't figure out an easy fix.
   * **Fix:** Use the binary AppImage.
 * The assignment came with a `submit.py` file for Coursera that didn't work with Python >= 3.8.
   * Error: `AttributeError: module 'time' has no attribute 'clock'`
   * I could submit by running it with Python 3.7, but the submission didn't pass Coursera checks.
     * Error: `Check your output statement and make sure it meets the requirements of the assignment.`
-  * Fix: Submit from the MiniZinc IDE.
+  * **Fix:** Submit from the MiniZinc IDE.
 * MiniZinc IDE failed to submit due to an old OpenSSL 1.0 dependency.
   * Error: `qt.network.ssl: QSslSocket: cannot resolve SSL_library_init`
   * Error: `Error creating SSL context (error:140A90C4:SSL routines:func(169):reason(196))`
@@ -29,7 +29,7 @@ MiniZinc couldn't build from source, so I installed the binary AppImage.
 Since it's untrusted, I set it up to run as separate user named `grencez-for-games`, which was created in [a previous article](0906-steam.md).
 The username does make some sense as MiniZinc will be solving puzzles.
 
-Installation was fairly strightforward.
+Installation was fairly straightforward.
 I placed the AppImage in an `Applications` directory, and the installation step just creates some symlinks to it.
 
 ```shell
