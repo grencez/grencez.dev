@@ -26,7 +26,7 @@ To summarize the problems:
 ## Installing MiniZinc
 
 MiniZinc couldn't build from source, so I installed the binary AppImage.
-Since it's untrusted, I set it up to run as separate user named `grencez-for-games`, which was created in [a previous article](0906-steam.md).
+Since it's untrusted, I set it up to run as separate user named `grencez-for-games`, which was created in [a previous article](steam-linux-20200906.md).
 The username does make some sense as MiniZinc will be solving puzzles.
 
 Installation was fairly straightforward.
