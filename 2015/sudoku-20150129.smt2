@@ -1,5 +1,5 @@
 
-;; Run with: z3 sudoku.smt2
+;; Run with: z3 sudoku-20150129.smt2
 
 ;; This file is structured as follows:
 ;; 1. Sets up the data types and helper functions.
