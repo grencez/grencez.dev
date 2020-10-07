@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebRTC Text Chat</title>
+  </head>
+  <body>
+    <div>
+      <input id="copy_field"></input>
+      <button id="copy_button" onclick="copy_button_cb()">Copy</button>
+    </div>
+    <input id="webrtc_answer_input"></input>
+    <div id="chat_messages"></div>
+    <form id="chat_form" onsubmit="return false" autocomplete="off">
+      <input type="text" id="chat_input" />
+      <input type="submit" value="Send" />
+    </form>
+    <script type="text/javascript" src="webrtc-text-chat-20200614-impl.js"></script>
+  </body>
+</html>
