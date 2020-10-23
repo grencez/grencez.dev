@@ -1,6 +1,7 @@
 
 # 2020
 
+* [dvorak-grencez-20201022](dvorak-grencez-20201022/index.md): Installing the "dvorak-grencez" custom keyboard layout
 * [webgl-texture-ping-pong-20200607](webgl-texture-ping-pong-20200607.md): WebGL ping-pong shading
 * [webrtc-text-chat-20200614](webrtc-text-chat-20200614.md): WebRTC text chat without a signalling or TURN server
 * [steam-linux-20200906](steam-linux-20200906.md): Running Hades' Star on Linux in Steam

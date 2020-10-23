@@ -1,0 +1,87 @@
+
+! Make the Menu key as another "Windows" key
+keysym Menu = Super_R
+
+! BEGIN KEYBOARD LAYOUT
+!
+!|---------------------------------------------------------|
+!| $ | & | [ | { | ( | + | = | * | ) | } | ] | ! | # |  BS |
+!|---------------------------------------------------------|
+!| Tab | ; | , | . | p | y | f | g | c | r | l | / | \ | @ |
+!|---------------------------------------------------------|
+!| ENTR | a | o | e | u | i | d | h | t | n | s | - | ENTR |
+!|---------------------------------------------------------|
+!| SHIFT  | ' | q | j | k | x | b | m | w | v | z |  SHIFT |
+!|---------------------------------------------------------|
+!| F | C  | W | A |    SPACE BAR      | A | W | C |  < u > |
+!|---------------------------------------------------l-d-r-|
+!
+!
+!|---------------------------------------------------------|
+!| ~ | 9 | 7 | 5 | 3 | 1 | % | 0 | 2 | 4 | 6 | 8 | ` |  BS |
+!|---------------------------------------------------------|
+!| Tab | : | < | > | P | Y | F | G | C | R | L | ? | | | ^ |
+!|---------------------------------------------------------|
+!| ENTR | A | O | E | U | I | D | H | T | N | S | _ | ENTR |
+!|---------------------------------------------------------|
+!| SHIFT  | " | Q | J | K | X | B | M | W | V | Z |  SHIFT |
+!|---------------------------------------------------------|
+!| F | C  | W | A |    SPACE BAR      | A | W | C |  < u > |
+!|---------------------------------------------------l-d-r-|
+
+! Make caps lock a Return
+remove Lock = Caps_Lock
+keysym Caps_Lock = Return
+
+keysym asciitilde = dollar asciitilde
+keysym 1 = ampersand 9
+keysym 2 = bracketleft 7
+keysym 3 = braceleft 5
+keysym 4 = parenleft 3
+keysym 5 = plus 1
+keysym 6 = equal percent
+keysym 7 = asterisk 0
+keysym 8 = parenright 2
+keysym 9 = braceright 4
+keysym 0 = bracketright 6
+keysym minus = exclam 8
+keysym equal = numbersign grave
+
+keysym q = semicolon colon
+keysym w = comma less
+keysym e = period greater
+keysym r = p P
+keysym t = y Y
+keysym y = f F
+keysym u = g G
+keysym i = c C
+keysym o = r R
+keysym p = l L
+keysym bracketleft = slash question
+keysym bracketright = backslash bar
+keysym backslash = at asciicircum
+
+keysym a = a A
+keysym s = o O
+keysym d = e E
+keysym f = u U
+keysym g = i I
+keysym h = d D
+keysym j = h H
+keysym k = t T
+keysym l = n N
+keysym semicolon = s S
+keysym apostrophe = minus underscore
+
+keysym z = apostrophe quotedbl
+keysym x = q Q
+keysym c = j J
+keysym v = k K
+keysym b = x X
+keysym n = b B
+keysym m = m M
+keysym comma = w W
+keysym period = v V
+keysym slash = z Z
+
+
