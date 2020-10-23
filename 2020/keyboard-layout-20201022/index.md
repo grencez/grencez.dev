@@ -43,7 +43,7 @@ This was the resulting "dvorak-grencez" layout (first normal, then with "Shift" 
 |---------------------------------------------------------|
 ```
 
-## Simple config (Xmodmap and loadkeys)
+## Simple config (loadkeys and Xmodmap)
 
 Using it has been pretty easy so far.
 I have a [dvorak-grencez.map](dvorak-grencez.map) config for `loadkeys` to set the console layout and a [dvorak-grencez.xmodmap](dvorak-grencez.xmodmap) config for `xmodmap` to set the layout when X is running.
@@ -59,7 +59,7 @@ xmodmap dvorak-grencez.xmodmap
 # setxkbmap us  # Reset to qwerty
 ```
 
-I have a script called `amasdf` to run those last 2 commands and another script called `amaoeu` that runs `setxkbmap us` to quickly let someone else the keyboard.
+I have a script called `amasdf` to run those last 2 commands and another script called `amaoeu` that runs `setxkbmap us` to quickly toggle back for someone else to use the keyboard.
 
 The `loadkeys` config can similarly be used without installing it:
 
@@ -82,7 +82,7 @@ sudo sed -i -E -e "s/^keymap=.*/keymap=\"dvorak-grencez\"/" /etc/conf.d/keymaps
 ## Problems with Xmodmap
 
 The simplicity of Xmodmap is fantastic, but it doesn't seem low-level enough in some cases.
-For example, after recent update (of X?), `xmodmap` does not affect keyboard shortcuts of some programs (e.g., "new tab" in Chromium) until they restart.
+For example, after a recent update (of X?), `xmodmap` does not affect keyboard shortcuts of some programs (e.g., "new tab" in Chromium) until they restart.
 Perhaps that example has a solution, but I'd also like to set a system default instead of typing a command after rebooting or plugging in new keyboard.
 
 ## Native X config (XKB)
@@ -94,7 +94,7 @@ The other subdirectories of `/usr/share/X11/xkb/` have configs that feed into it
 Xmodmap can be loaded and [dumped as an XKB config](https://unix.stackexchange.com/questions/202883/create-xkb-configuration-from-xmodmap).
 The following commands do that, trims the config to just the `xkb_symbols` section, then installs the file as `/usr/share/X11/xkb/symbols/us_dvorak_grencez`:
 
-```
+```shell
 setxkbmap us  # Reset.
 xmodmap dvorak-grencez.xmodmap  # Apply Xmodmap config.
 xkbcomp -xkb $DISPLAY -o us_dvorak_grencez
@@ -106,9 +106,17 @@ sudo install -m 644 us_dvorak_grencez /usr/share/X11/xkb/symbols/us_dvorak_grenc
 rm us_dvorak_grencez
 ```
 
-Now `setxkbmap -query` reports `us_dvorak_grencez` as the layout and `pc105` as the model.
+Now I can load the layout with `setxkbmap`:
+
+```shell
+setxkbmap us  # Reset (unnecessary).
+setxkbmap us_dvorak_grencez  # Change to custom layout.
+setxkbmap -query  # Get report.
+```
+
+The last command reports `us_dvorak_grencez` as the layout and `pc105` as the model.
 Great!
-The system default is changed by creating a `/etc/X11/xorg.conf.d/00-keyboard.conf` file containing:
+The system default (which takes effect after restarting X) is changed by creating a `/etc/X11/xorg.conf.d/00-keyboard.conf` file containing:
 
 ```
 Section "InputClass"
