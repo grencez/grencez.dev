@@ -52,8 +52,8 @@ The following commands download both files (for completeness), resets the keyboa
 ```shell
 mkdir -p $HOME/local/opt/dvorak-grencez/
 cd $HOME/local/opt/dvorak-grencez/
-wget http://grencez.dev/2020/dvorak-grencez-20201022/dvorak-grencez.map
-wget http://grencez.dev/2020/dvorak-grencez-20201022/dvorak-grencez.xmodmap
+wget http://grencez.dev/2020/keyboard-layout-20201022/dvorak-grencez.map
+wget http://grencez.dev/2020/keyboard-layout-20201022/dvorak-grencez.xmodmap
 setxkbmap us
 xmodmap dvorak-grencez.xmodmap
 # setxkbmap us  # Reset to qwerty
