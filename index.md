@@ -14,6 +14,7 @@
 ## All Years
 
 * [2020](2020/index.md)
+* [2016](2016/index.md)
 * [2015](2015/index.md)
 * [2014](2014/index.md)
 
