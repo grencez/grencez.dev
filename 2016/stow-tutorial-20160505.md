@@ -25,8 +25,8 @@ This procedure works well enough for me anyway.
 
 ### Set the PATH Environment Variable {sec:PATH}
 
-The `${PATH`} environment variable holds a colon-delimited list of directories where executables should be found.
-See what it is now by typing `echo ${PATH`}.
+The `${PATH}` environment variable holds a colon-delimited list of directories where executables should be found.
+See what it is now by typing `echo ${PATH}`.
 We want to make sure that `~/bin/` and `~/local/bin/` are there.
 
 If you use the `bash` shell (find out using `echo ${SHELL}`), then run the following:
@@ -34,7 +34,7 @@ If you use the `bash` shell (find out using `echo ${SHELL}`), then run the follo
 printf '%s\n' 'export PATH="${HOME}/bin:${HOME}:/local/bin:${PATH}"' >> ~/.bashrc
 ```
 The changes may not take effect unless you log out and log in again.
-To check, remember to `echo ${PATH`}.
+To check, remember to `echo ${PATH}`.
 
 If you use a `csh`-based shell like `tcsh`, then run the following (or preferably switch to something less terrible):
 ```shell
@@ -65,8 +65,6 @@ cd ~/local/stow
 cd ~/local/src && rm -fr $pkg stow-latest.tar.gz
 ```
 
-%pkg=$(ls -AU1 | grep -axEe 'stow-[0-9.]+' | sort -Vr | head -n1)
-
 ## Normal Procedure
 
 ### Build/Install
@@ -82,19 +80,19 @@ make && make install
 cd ~/local/stow
 stow $pkg
 ```
-See [#sec:eg:configure](this full example).
+See [this full example](#sec:eg:configure).
 
 **Using CMake.**
 For projects using `cmake`, follow this pattern.
 
 ```shell
-mkdir bld && cd bld
+mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX="${HOME}/local/stow/${pkg}" ..
 make && make install
 cd ~/local/stow
 stow $pkg
 ```
-See [#sec:eg:cmake](this full example).
+See [this full example](#sec:eg:cmake).
 
 ### Uninstall
 
@@ -138,7 +136,7 @@ curl -O https://curl.haxx.se/download/${pkg}.tar.gz
 tar xf ${pkg}.tar.gz
 cd $pkg
 
-mkdir bld && cd bld
+mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX="${HOME}/local/stow/${pkg}" ..
 make -j4
 make install
