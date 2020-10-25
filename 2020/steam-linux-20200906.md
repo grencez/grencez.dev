@@ -1,3 +1,8 @@
+---
+canonical_url: https://grencez.dev/2020/steam-linux-20200906
+date: 2020-09-06
+description: How to run Hades' Star on Linux in Steam as different user.
+---
 
 # Running Hades' Star on Linux in Steam
 

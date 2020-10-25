@@ -1,6 +1,14 @@
+---
+canonical_url: https://grencez.dev/2014/gentoo-install-20140305
+date: 2014-03-05
+description: Steps I took to install Gentoo Linux.
+---
+
 # Installing Gentoo
 
 Date: 2014-03-05
+
+I've been using Gentoo Linux for a few years and have followed these notes a few times on different computers.
 
 ## Prepare the Disk
 

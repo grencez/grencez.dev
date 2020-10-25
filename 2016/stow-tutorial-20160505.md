@@ -1,3 +1,8 @@
+---
+canonical_url: https://grencez.dev/2016/stow-tutorial-20160505
+date: 2016-05-05
+description: How to install programs from source in Linux as a normal user with stow.
+---
 
 # Install Program as Normal User
 

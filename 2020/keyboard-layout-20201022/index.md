@@ -1,3 +1,8 @@
+---
+canonical_url: https://grencez.dev/2020/keyboard-layout-20201022
+date: 2020-10-22
+description: How to install a custom keyboard layout in Linux using loadkeys, Xmodmap, or XKB.
+---
 
 # Installing the "dvorak-grencez" custom keyboard layout
 

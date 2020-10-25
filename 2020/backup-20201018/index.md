@@ -1,3 +1,8 @@
+---
+canonical_url: https://grencez.dev/2020/backup-20201018
+date: 2020-10-18
+description: How to make simple encrypted backups in Linux with cryptsetup and rsync.
+---
 
 # Encrypted backups of a Linux system with cryptsetup and rsync
 

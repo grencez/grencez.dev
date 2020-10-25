@@ -1,7 +1,7 @@
 ---
+canonical_url: https://grencez.dev/2015/ssh-tutorial-20151107
 date: 2015-11-07
 description: How to set up passwordless SSH login and tunneling.
-canonical_url: https://grencez.dev/2015/ssh-tutorial-20151107
 ---
 
 # Being a Pro with SSH

@@ -1,3 +1,8 @@
+---
+canonical_url: https://grencez.dev/2020/minizinc-coursera-20200927
+date: 2020-09-27
+description: How to install MiniZinc in Linux as a different user.
+---
 
 # Submitting a MiniZinc Coursera assignment
 
