@@ -23,7 +23,7 @@ If a project `${pkg}` does not have a standard install, then we put it in `~/loc
 Or simply move the executable to `~/bin/`.
 This procedure works well enough for me anyway.
 
-### Set the PATH Environment Variable {sec:PATH}
+### Set the PATH Environment Variable {#sec:PATH}
 
 The `${PATH}` environment variable holds a colon-delimited list of directories where executables should be found.
 See what it is now by typing `echo ${PATH}`.
