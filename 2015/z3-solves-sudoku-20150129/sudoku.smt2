@@ -1,5 +1,5 @@
 
-;; Run with: z3 sudoku-20150129.smt2
+;; Run with: z3 sudoku.smt2
 
 ;; This file is structured as follows:
 ;; 1. Sets up the data types and helper functions.
@@ -75,17 +75,19 @@
               (board row2 col2))))))
 
 ;; Use this board:
-; 0 0 0  8 0 6  7 0 0
-; 0 0 0  2 9 0  0 4 0
-; 9 0 0  0 0 7  0 0 6
-;
-; 5 0 0  0 0 8  4 0 0
-; 6 0 0  0 0 0  2 5 0
-; 0 0 2  7 6 0  0 0 0
-;
-; 0 0 0  6 0 0  1 7 0
-; 0 0 0  0 7 0  5 0 4
-; 0 4 0  0 1 0  0 9 0
+; -------------------------
+; |       | 8   6 | 7     |
+; |       | 2 9   |   4   |
+; | 9     |     7 |     6 |
+; |-----------------------|
+; | 5     |     8 | 4     |
+; | 6     |       | 2 5   |
+; |     2 | 7 6   |       |
+; |-----------------------|
+; |       | 6     | 1 7   |
+; |       |   7   | 5   4 |
+; |   4   |   1   |   9   |
+; -------------------------
 ;; Row 0
 (assert (= (board 0 3) V8))
 (assert (= (board 0 5) V6))
@@ -152,3 +154,4 @@
 
 (exit)
 
+; vim: ft=lisp:lw+=define-fun,forall,exists:
