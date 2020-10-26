@@ -1,4 +1,4 @@
 
 # 2016
 
-* [stow-tutorial-20160505](stow-tutorial-20160505.md): Install Program as Normal User
+* [stow-tutorial-20160505](stow-tutorial-20160505.md): Install programs as a normal user with GNU Stow
