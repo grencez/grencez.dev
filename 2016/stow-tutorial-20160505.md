@@ -1,13 +1,15 @@
 ---
 canonical_url: https://grencez.dev/2016/stow-tutorial-20160505
 date: 2016-05-05
-dateModified: 2020-10-26
+last_modified_at: 2020-10-26
 description: How to install programs from source in Linux as a normal user with GNU Stow.
 ---
 
 # Install programs as a normal user with GNU Stow
 
 Date: 2016-05-05
+
+Update: 2020-10-26, Stow is still great!
 
 If you are a user on a Linux/Unix system without root privileges, you'll probably run into a scenario where you want to install a program that the administrator does not care to install system-wide.
 Continue reading to learn how to do such an installation yourself.
