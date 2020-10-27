@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://grencez.dev</loc> <lastmod>2020-10-26</lastmod> <changefreq>weekly</changefreq></url>
+  <url><loc>https://grencez.dev/2020</loc> <priority>0.2</priority></url>
   <url><loc>https://grencez.dev/2020/freshtomato-client-router-20201025</loc> <lastmod>2020-10-25</lastmod></url>
   <url><loc>https://grencez.dev/2020/keyboard-layout-20201022</loc> <lastmod>2020-10-22</lastmod> <priority>1.0</priority></url>
   <url><loc>https://grencez.dev/2020/backup-20201018</loc> <lastmod>2020-10-18</lastmod> <priority>0.8</priority></url>
@@ -8,10 +10,13 @@
   <url><loc>https://grencez.dev/2020/steam-linux-20200906</loc> <lastmod>2020-09-06</lastmod> <priority>0.7</priority></url>
   <url><loc>https://grencez.dev/2020/webrtc-text-chat-20200614</loc> <lastmod>2020-06-14</lastmod></url>
   <url><loc>https://grencez.dev/2020/webgl-texture-ping-pong-20200607</loc> <lastmod>2020-06-07</lastmod></url>
+  <url><loc>https://grencez.dev/2016</loc> <priority>0.2</priority></url>
   <url><loc>https://grencez.dev/2016/stow-tutorial-20160505</loc> <lastmod>2020-10-26</lastmod> <priority>0.8</priority></url>
+  <url><loc>https://grencez.dev/2015</loc> <priority>0.2</priority></url>
   <url><loc>https://grencez.dev/2015/ssh-tutorial-20151107</loc> <lastmod>2015-11-07</lastmod></url>
   <url><loc>https://grencez.dev/2015/pdfscan-20151104</loc> <lastmod>2015-11-04</lastmod></url>
   <url><loc>https://grencez.dev/2015/z3-solves-sudoku-20150129</loc> <lastmod>2020-10-25</lastmod> <priority>0.8</priority></url>
+  <url><loc>https://grencez.dev/2014</loc> <priority>0.2</priority></url>
   <url><loc>https://grencez.dev/2014/gentoo-install-20140305</loc> <lastmod>2014-03-05</lastmod> <priority>0.3</priority></url>
 </urlset>
 

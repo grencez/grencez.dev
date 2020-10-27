@@ -1,3 +1,6 @@
+---
+canonical_url: https://grencez.dev/2015
+---
 
 # 2015
 

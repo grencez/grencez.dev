@@ -1,3 +1,8 @@
+---
+canonical_url: https://grencez.dev
+date: 2020-10-26
+description: Brief reports of Linux tools, configurations, and code that worked for me at some point.
+---
 
 # What I did, documented for next time
 
