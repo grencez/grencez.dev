@@ -16,44 +16,45 @@ Updated: 2020-10-27, when I wrote this article and retested everything.
 Jump to the [setup instructions below](#setup) if you haven't installed `spin` or my helper scripts (`spinsafe`, `spinlive`, `spinltl`, and `spinplay`).
 
 Download [agreepair.pml](agreepair.pml) (or [view it on GitHub](https://github.com/grencez/grencez.dev/blob/trunk/2015/spin-checks-agreement-20150407/agreepair.pml)).
-This Promela code models a pair of processes that *should* eventually agree on an `x` value.
+This Promela code models a pair of processes that *should* eventually agree to have the same `x` value, which can be any integer from 0 to 5.
 It doesn't quite work though.
 Using Spin, perhaps you can fix it!
 
 ### Exercise 1: Verify the program's safety properties
 
-**Exercise 1.a.** What is the deadlock (**invalid end state**) that you find?
+**Exercise 1.a.** What is the deadlock (aka *invalid end state*) that you find?
 
-* GUI: Select **safety** and run the verification. Ensure that the verification searched for **invalid end states**.
 * CLI: Run `spinsafe agreepair.pml`.
-
-To view the deadlock in `ispin`, navigate to the **Simulate/Replay** tab, ensure **Guided, with trail** is selected and filled in, and click **Run**.
-In **jspin**, just click **Guided**. On the command line, run `spinplay agreepair.pml`.
+  * Replay with `spinplay agreepair.pml`.
+* GUI: In the `Verification` tab, select `safety` and run the verification. Ensure that the verification searched for `invalid end states`.
+  * To view the deadlock in `ispin`, navigate to the `Simulate/Replay` tab, ensure `Guided, with trail` is selected and filled in, and click `Run`.
+  * If using `jspin`, just click `Guided`. On the command line, run `spinplay agreepair.pml`.
 
 **Exercise 1.b.** How can the deadlock be fixed?\
 Make the fix and verify that no deadlocks exist.
 
 ### Exercise 2: Verify the program's LTL properties
 
-**Exercise 2.a.** Verify the **LTL claim** named `close_enough`.\
+**Exercise 2.a.** Verify the LTL claim named `close_enough`.\
 Instructions: Uncomment the claim by changing `#if 0` to `#if 1` near the end of the file.
 
-* GUI: Select **acceptance cycles** and run the verification. Ensure that the verification uses the **never clause**.
 * CLI: Run `spinltl agreepair.pml`.
+* GUI: Select `acceptance cycles` and `use claim` (under `never claims`) then run the verification.
+  * The never claim's name is `close_enough`, but you don't need to specify it.
 
 This should succeed if the deadlock was fixed in the previous exercise.
 
-**Exercise 2.b.** Verify the **LTL claim** named `exactly_equal`.\
+**Exercise 2.b.** Verify the LTL claim named `exactly_equal`.\
 Instructions: Same as before, but change `#if 1` back to `#if 0`, and change `#elif 0` to `#elif 1`.
 
 This should fail, but we'll fix it in the next exercise.
 
 ### Exercise 3: Verify the program's other liveness properties
 
-**Exercise 3.a.** What is the livelock (**non-progress cycle**) that you find?
+**Exercise 3.a.** What is the livelock (aka *non-progress cycle*) that you find?
 
-* GUI: Select **non-progress cycles** and run the verification.
 * CLI: Run `spinlive agreepair.pml`.
+* GUI: Select `non-progress cycles` and run the verification.
 
 **Exercise 3.b.** How can the livelock be fixed without adding an `atomic` block?
 *Remove* the livelock and verify that no other livelocks exist.
@@ -101,8 +102,8 @@ git clone https://github.com/nimble-code/Spin.git $release_name
 cd $release_name
 make -C Src
 mkdir -p ~/local/stow/$release_name/bin
-install 0755 Src/spin ~/local/stow/$release_name/bin/spin
-install 0755 optional_gui/ispin.tcl ~/local/stow/$release_name/bin/ispin
+install --mode 0755 -T Src/spin ~/local/stow/$release_name/bin/spin
+install --mode 0755 -T optional_gui/ispin.tcl ~/local/stow/$release_name/bin/ispin
 cd ~/local/stow
 stow $release_name
 ```
@@ -119,11 +120,13 @@ echo 'autocmd BufNewFile,BufRead *.pml set ft=promela sw=2 ts=2' >> ~/.vim/filet
 
 If you don't have a `~/.vimrc` already, this will make it:
 ```shell
-cd ~/
-echo 'set nocompatible' >> .vimrc
-echo 'filetype on' >> .vimrc
-echo 'filetype plugin indent on' >> .vimrc
-echo 'syntax enable' >> .vimrc
+cat > ~/.vimrc <<"HERE_DOCUMENT"
+set nocompatible
+set expandtab
+filetype on
+filetype plugin indent on
+syntax enable
+HERE_DOCUMENT
 ```
 
 If you have no idea what's going on with this editor:
