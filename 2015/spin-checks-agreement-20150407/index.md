@@ -83,7 +83,7 @@ cd ~/local/stow
 stow $release_name
 ```
 
-For completeness, the individual files can be: [spinsafe](spinsafe), [spinlive](spinlive), [spinltl](spinltl), [spinplay](spinplay)
+For completeness, the individual files are: [spinsafe](spinsafe), [spinlive](spinlive), [spinltl](spinltl), [spinplay](spinplay)
 
 ### Install Spin {#install-spin}
 
