@@ -3,14 +3,13 @@ canonical_url: https://grencez.dev/2020/satisfiability-with-decay-20200621.md
 date: 2020-06-21
 last_modified_at: 2020-10-31
 description: 3-satisfiability is still NP-complete if the truth of each variable can nondeterministically decay to false during evaluation of subsequent clauses.
-mathjax: true
 ---
 
 {%- include mathjax.html -%}
 
 # Satisfiability with Decay
 
-Date: 2020-06-21 (https://cs.stackexchange.com/a/127485/34520)\
+Date: 2020-06-21 ([https://cs.stackexchange.com/a/127485/34520](https://cs.stackexchange.com/a/127485/34520))\
 Update: 2020-10-28 (wrote this article)
 
 ## Motivation
