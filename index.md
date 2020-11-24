@@ -15,6 +15,7 @@ description: Brief reports of Linux tools, configurations, and code that worked 
 * [minizinc-coursera-20200927](2020/minizinc-coursera-20200927.md): Submitting a MiniZinc Coursera assignment
 * [git-trunk-20200914](2020/git-trunk-20200914.md): Creating a Git repository whose default branch is named "trunk"
 * [steam-linux-20200906](2020/steam-linux-20200906.md): Running Hades' Star on Linux in Steam
+* [satisfiability-with-decay-20200621](2020/satisfiability-with-decay-20200621.md): Boolean Satisfiability with Decay
 * [webrtc-text-chat-20200614](2020/webrtc-text-chat-20200614/index.md): WebRTC text chat without a signalling or TURN server
 * [webgl-texture-ping-pong-20200607](2020/webgl-texture-ping-pong-20200607/index.md): WebGL ping-pong shading
 
