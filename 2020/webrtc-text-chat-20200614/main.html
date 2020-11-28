@@ -5,10 +5,13 @@
   </head>
   <body>
     <div>
-      <input id="copy_field"></input>
-      <button id="copy_button" onclick="copy_button_cb()">Copy</button>
+      <input id="webrtc_offer_input" readonly></input>
+      <a id="webrtc_offer_url">Loading offer...</a>
     </div>
-    <input id="webrtc_answer_input"></input>
+    <div>
+      <input id="webrtc_answer_input"></input>
+      <button id="webrtc_answer_button" onclick="copy_answer_cb()">...</button>
+    </div>
     <div id="chat_messages"></div>
     <form id="chat_form" onsubmit="return false" autocomplete="off">
       <input type="text" id="chat_input" />
