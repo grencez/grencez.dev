@@ -1,0 +1,85 @@
+---
+canonical_url: https://grencez.dev/2015/82000-digits-20150829
+date: 2015-08-29
+description: A clever algorithm to search for
+last_modified_at: 2020-11-29
+---
+
+# Digits of 82000
+
+Date: 2015-08-29 (searched for the [https://oeis.org/A146025](https://oeis.org/A146025) sequence's next number after 82000 up to 11 million decimal digits)
+
+Updated: 2020-11-29 (wrote this article)
+
+## Problem
+
+You can write the number 82000 in different bases, but a few after base 2 still look like binary:
+
+* Base 2: 10100000001010000
+* Base 3: 11011111001
+* Base 4: 110001100
+* Base 5: 10111000
+* Base 6: 1431344
+* Base 10: 82000
+
+Wow that's a lot of ones and zeroes.
+You might ask how rare that is.
+The sequence at [https://oeis.org/A146025](https://oeis.org/A146025) lists the currently-known integers that can be written using digits 0 and 1 in all bases 2, 3, 4, and 5.
+The list currently has 3 numbers (0, 1, and 82000), so you could say that 82000 is quite rare!
+Is there another number in the sequence?
+
+
+## Search Technique {#search-technique}
+
+Nonexistence proofs can be pretty challenging, so maybe it's worth letting a computer search for one!
+[This reddit.com/r/math comment](https://www.reddit.com/r/math/comments/36jq0k/a_curious_property_of_82000/crf0pkn) from [threenplusone](https://www.reddit.com/user/threenplusone/) outlines a clever way to search:
+
+1. Start with a guess of 82001.
+2. Check whether the guess is written with all 0 and 1 digits in base 5.
+   * If not, then increase the guess to the next-largest number that can be.
+3. Repeat step 2 using base 4.
+4. Repeat step 2 using base 3.
+5. Did we have to change our guess in the last 3 steps?
+   * If so, then go back to step 2.
+   * If not, then we have an answer!
+
+The clever part is skipping to the next-largest number written with all 0 and 1 digits when the check fails.
+It seems to make the search reach any guess in polylogarithmic time, somewhere between quadratic and cubic in the number of bits of the guess.
+Each `{0,1}-digits` check is linear in the number of bits of the guess when the check fails in the high digits, but a check is quadratic in the worst case when it passes.
+For the entire search to be polylog time, the number of digits would need to grow at a near-constant rate with respect to number of checks performed.
+I don't know what property of numbers would would make this true, so I can't give a definitive time complexity!
+
+The check and update code is fairly efficient since we can avoid calculating most digits of a guess when one of its higher digits is not 0 or 1.
+
+```javascript
+function check01_simple(guess, base) {
+  // Both inputs have the BigInt type.
+
+  // Calculate high digit's place value, assuming that the high digit is 1
+  // (even if it isn't really). The actual code maintains and updates these
+  // place values for each base instead of recalculating them every check.
+  const number_of_digits_in_guess = BigInt(guess.toString(Number(base)).length);
+  let high = base ** (number_of_digits_in_guess - 1);
+
+  let r1 = guess;
+  let passed = true;
+  while (high > 1) {
+    if (r1 >= high) {
+      const r2 = r1 - high;
+      if (r2 >= high) {
+        passed = false;
+        break;
+      }
+      r1 = r2;
+    }
+    high /= base;  // Integer division.
+  }
+  passed = passed && (r1 <= 1);
+
+  if (!passed) {
+    // Update guess.
+    guess = guess - r1 + high * base;
+  }
+  return [guess, passed];
+}
+```
