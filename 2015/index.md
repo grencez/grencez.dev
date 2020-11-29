@@ -1,5 +1,7 @@
 ---
 canonical_url: https://grencez.dev/2015
+date: 2015-01-01
+last_modified_at: 2020-11-28
 ---
 
 # 2015
@@ -8,5 +10,6 @@ canonical_url: https://grencez.dev/2015
 * [spin-checks-agreement-20150407](spin-checks-agreement-20150407/index.md): Finding your first deadlock and livelock with the Spin model checker
 * [tok5-20150904.c](tok5-20150904.c): Token ring implemented with fork() and pipe()
 * [pdfscan-20151104](pdfscan-20151104.md): Fixing up Scanned PDFs
+* [getting-by-with-git-20151107](getting-by-with-git-20151107.md): Getting by with Git
 * [ssh-tutorial-20151107](ssh-tutorial-20151107.md): Being a Pro with SSH
 
