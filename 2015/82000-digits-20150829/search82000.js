@@ -1,11 +1,43 @@
 "use strict";
 
+
+/**
+ * Count digits of a number written in a certain base.
+ *
+ * Like mpz_sizeinbase() but slower and exact.
+ */
+function count_digits_in_base(x, base) {
+  base = BigInt(base);
+  x = BigInt(x);
+  let place_values = []
+  let high = base;
+  while (high <= x) {
+    place_values.push(high);
+    high *= high;
+  }
+  place_values.reverse();
+  high = 1n;
+  let count = 0n;
+  for (const place_value of place_values) {
+    count = (count << 1n);
+    const higher = high * place_value;
+    if (higher <= x) {
+      high = higher;
+      count |= 1n;
+    }
+  }
+  return count + 1n;
+}
+
+
 class SearchState {
-  constructor(base) {
-    this.base = BigInt(base);
-    this.high = 1n;
-    this.higher = BigInt(base);
-    this.guess = null;  // Set this directly.
+  constructor(guess, base) {
+    guess = BigInt(guess);
+    base = BigInt(base);
+    this.base = base;
+    this.high = base ** (count_digits_in_base(guess, base) - 1n);
+    this.higher = this.high * base;
+    this.guess = null;  // Set this directly before calling check01().
   }
 }
 
@@ -42,27 +74,34 @@ function check01(search) {
 }
 
 
-function search01(min_base, max_base, initial_guess, max_guess) {
+function search01(bases, initial_guess, max_guess) {
+  let guess = BigInt(initial_guess);
   let search_states = [];
-  for (let base = max_base; base >= min_base; --base) {
-    search_states.push(new SearchState(base));
+  for (const base of bases) {
+    search_states.push(new SearchState(guess, base));
   }
 
-  let decimal_digit_count = 0;
-  let decimal_place = 1n;
+  const print_digits_difference = 100n;
+  let decimal_digit_count = count_digits_in_base(guess, 10);
+  decimal_digit_count -= decimal_digit_count % print_digits_difference;
+  let print_value_threshold = 10n**BigInt(decimal_digit_count);
 
-  let guess = initial_guess;
+
   let passing = false;
-  while (!passing) {
-    passing = true;
-    while (decimal_place <= guess) {
-      decimal_place *= 10n;
-      decimal_digit_count += 1;
-      if (decimal_digit_count % 100 == 0) {
-        console.log("Searched " + decimal_digit_count + " decimal digits.");
-      }
+  let print_iteration_count = 0;
+  while (!passing && (max_guess == null || guess <= max_guess)) {
+    // Condition to display progress.
+    while (guess >= print_value_threshold) {
+      console.log("Searched " + decimal_digit_count + " decimal digits." +
+        " (+" + print_iteration_count + " iterations)");
+      print_value_threshold *= 10n ** BigInt(print_digits_difference);
+      decimal_digit_count += print_digits_difference;
+      print_iteration_count = 0;
     }
+    print_iteration_count += 1;
 
+    // Run check for all bases.
+    passing = true;
     for (let search of search_states) {
       search.guess = guess;
       if (!check01(search)) {
@@ -70,15 +109,18 @@ function search01(min_base, max_base, initial_guess, max_guess) {
       }
       guess = search.guess;
     }
-    if (max_guess != null && guess > max_guess) {
-      return null;
-    }
+  }
+  if (!passing) {
+    return null;
   }
   return guess;
 }
 
-let solution = search01(3, 5, 2n, null);
-//let solution = search01(3, 5, 82001n, null);
+let solution = search01([3,4,5], 2, null);
+//let solution = search01([3,4,5], 82001, null);
+//let solution = search01([4,5], 82002, null);
+//let solution = search01([4,5], 82006, null);
+
 
 if (solution != null) {
   console.log(solution);
