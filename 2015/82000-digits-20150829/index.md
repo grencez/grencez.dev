@@ -1,7 +1,7 @@
 ---
 canonical_url: https://grencez.dev/2015/82000-digits-20150829
 date: 2015-08-29
-description: A clever algorithm to search for
+description: A clever algorithm to search for integers that can be written with ones and zeroes in several bases.
 last_modified_at: 2020-11-29
 ---
 
@@ -10,6 +10,8 @@ last_modified_at: 2020-11-29
 Date: 2015-08-29 (searched for a number of [https://oeis.org/A146025](https://oeis.org/A146025) after 82000 up to 11 million decimal digits)
 
 Updated: 2020-11-29 (wrote this article)
+
+Download code: [search82000.js](search82000.js), [search82000.c](search82000.c)
 
 ## Problem
 
