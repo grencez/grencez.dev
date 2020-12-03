@@ -15,12 +15,12 @@ We will learn how to log in quickly to this server, even if the name is quite lo
 
 ### Passwordless Login
 
-We can generate a key pair stored on the current machine at `~/.ssh/id\_rsa.pub` (public, safe to share) and `~/.ssh/id\_rsa` (private, never share this one).
+We can generate a key pair stored on the current machine at `~/.ssh/id_rsa.pub` (public, safe to share) and `~/.ssh/id_rsa` (private, never share this one).
 ```shell
 ssh-keygen -t rsa -b 4096
 ```
 Just use the defaults by hitting enter.
-Then, we append the content of `~/.ssh/id\_rsa.pub` to `~/.ssh/authorized\_keys` on the host machine.
+Then, we append the content of `~/.ssh/id_rsa.pub` to `~/.ssh/authorized_keys` on the host machine.
 ```shell
 ssh-copy-id $host
 ```
