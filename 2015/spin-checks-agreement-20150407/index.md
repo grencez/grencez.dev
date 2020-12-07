@@ -63,7 +63,7 @@ This should fail, but we'll fix it in the next exercise.
 ## Setting up Spin {#setup}
 
 We will use `stow` as a maintainable way of installing files as a normal user in `~/local/bin`.
-Follow [these instructions](../2016/stow-tutorial-20160505.md) to install it and configure your system accordingly.
+Follow [these instructions](../../2016/stow-tutorial-20160505.md) to install it and configure your system accordingly.
 
 ### Install helper scripts {#install-spinsafe}
 

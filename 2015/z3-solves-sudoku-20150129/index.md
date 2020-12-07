@@ -75,7 +75,7 @@ Alternatively, you can find pre-built versions of Z3 available for other platfor
 But if you would prefer to install from source in Linux as a normal user,  read on!
 Otherwise, skip this section.
 
-We will install `z3` using `stow`, so follow [these instructions](../2016/stow-tutorial-20160505.md) to install it and configure your system accordingly.
+We will install `z3` using `stow`, so follow [these instructions](../../2016/stow-tutorial-20160505.md) to install it and configure your system accordingly.
 
 After that, check https://github.com/Z3Prover/z3/releases/latest for the latest release of Z3.
 At the time of writing this article, the latest tag is `z3-4.8.9`.
