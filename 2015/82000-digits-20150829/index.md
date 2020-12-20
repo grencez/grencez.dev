@@ -2,14 +2,14 @@
 canonical_url: https://grencez.dev/2015/82000-digits-20150829
 date: 2015-08-29
 description: A clever algorithm to search for integers that can be written with ones and zeroes in several bases.
-last_modified_at: 2020-11-29
+last_modified_at: 2020-12-19
 ---
 
 # Digits of 82000
 
 Date: 2015-08-29 (searched for a number of [https://oeis.org/A146025](https://oeis.org/A146025) after 82000 up to 11 million decimal digits)
 
-Updated: 2020-11-29 (wrote this article)
+Updated: 2020-11-29 (wrote this article), 2020-12-19 (added caching for better time complexity)
 
 Download code: [search82000.js](search82000.js), [search82000.c](search82000.c)
 
@@ -60,18 +60,22 @@ gnuplot -e 'set terminal png; f(x) = a*x + b; fit f(x) "iterations.dat" via a,b;
 ```
 
 After searching up to 500k decimal digits, the linear regression plot is a horizontal line indicating an average of about 430 iterations per 100 new digits.
-I don't know what property of numbers would make this true, but it would mean that the search can reach any guess *N* with *n* bits (or digits) in O(n) checks.
+If truly constant, then this would mean the search can reach any guess *N* with *n* bits (or digits) in O(n) checks.
+Furthermore, each `{0,1}-digits` check involves O(n) divisions by a constant base at worst, which makes each check O(n&sup2;lg(n)), and lets us reach any guess *N* in O(n&sup3;lg(n)) time.
 
-Each `{0,1}-digits` check of a number *N* with *n* bits (or digits) involves O(n) divisions by a constant base at worst, which would make it O(n&sup2;lg(n)).
-The worst case is pretty rare though since we reject early after finding a non-{0,1} digit.
+The seemingly constant bound on iterations is a result of another observation: When excluding base 3, I have not yet encountered a {0,1}-digit base 4 number has more than 114 leading {0,1} digits in base 5.
+Likewise, I have not encountered a {0,1}-digit base 5 number has more than 133 leading {0,1} digits in base 4.
+Therefore if we only consider bases 4 and 5, the checks may be O(n lg(n)), which is further reduced to O(n) if we replace division with cache lookups.
+This means our {0,1}-digit search in bases 4 and 5 may reach any guess *N* with *n* bits in O(n&sup2;) time (aka O(lg(N)&sup2;)).
+Even if there isn't a constant bound on the leading {0,1} digits, especially when base 3 is included, this quadratic complexity is basically what you can expect.
 
 ```javascript
 function check01_simple(guess, base) {
   // Both inputs have the BigInt type.
 
-  // Calculate high digit's place value, assuming that the high digit is 1
-  // (even if it isn't really). The actual code maintains and updates these
-  // place values for each base instead of recalculating them every check.
+  // Assuming that the high digit is 1, calculate its place value.
+  // The actual code calculates this from the previous high digit value
+  // since we already keep it and older ones in a cache.
   let high = base ** (count_digits_in_base(guess, base) - 1);
 
   let r1 = guess;
@@ -85,7 +89,8 @@ function check01_simple(guess, base) {
       }
       r1 = r2;
     }
-    high /= base;  // Integer division.
+    // Integer division. Actually a cache lookup.
+    high /= base;
   }
   passed = passed && (r1 <= 1);
 
