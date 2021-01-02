@@ -6,6 +6,8 @@ description: Brief reports of Linux tools, configurations, and code that worked 
 
 # What I did, documented for next time
 
+[Who am I?](about.md)
+
 ## Recent / Highlights
 
 * [ffmpeg-merge-video-20201122](2020/ffmpeg-merge-video-20201122.md): Concatenating videos and adding audio samples using FFmpeg
