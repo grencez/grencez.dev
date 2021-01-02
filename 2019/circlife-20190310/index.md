@@ -19,7 +19,7 @@ This behavior is summarized by a partial function &xi; that evaluates to &xi;(a,
 &xi; has the following properties:
 
 1. &forall;a,b: &xi;(a,b)=&xi;(b,a) (commutativity)
-2. |{&xi;(a,b) : &xi;(a,b)&ne;&UpTee;}| &isin; &Nopf; (finite set of genomes)
+2. &vert;{&xi;(a,b) : &xi;(a,b)&ne;&UpTee;}&vert; &isin; &Nopf; (finite set of genomes)
 3. &forall;a,b: &xi;(a,(a,b))=&UpTee; (incompatible with parents)
 4. &forall;a,b,c: &xi;(a,&xi;(&xi;(a,b),c))=&UpTee; (incompatible with grandparents)
 5. &xi; can be nondeterministic, even though we are writing it as a function here
