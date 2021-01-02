@@ -63,11 +63,11 @@ After searching up to 500k decimal digits, the linear regression plot is a horiz
 If truly constant, then this would mean the search can reach any guess *N* with *n* bits (or digits) in O(n) checks.
 Furthermore, each `{0,1}-digits` check involves O(n) divisions by a constant base at worst, which makes each check O(n&sup2;lg(n)), and lets us reach any guess *N* in O(n&sup3;lg(n)) time.
 
-The seemingly constant bound on iterations is a result of another observation: When excluding base 3, I have not yet encountered a {0,1}-digit base 4 number has more than 117 leading {0,1} digits in base 5.
-Likewise, I have not encountered a {0,1}-digit base 5 number has more than 133 leading {0,1} digits in base 4.
+The seemingly constant bound on iterations is a result of another observation: When excluding base 3, I have not yet encountered a {0,1}-digit base 4 number has more than 131 leading {0,1} digits in base 5.
+Likewise, I have not encountered a {0,1}-digit base 5 number has more than 155 leading {0,1} digits in base 4.
 Therefore if we only consider bases 4 and 5, the checks may be O(n lg(n)), which is further reduced to O(n) if we replace division with cache lookups.
 This means our {0,1}-digit search in bases 4 and 5 may reach any guess *N* with *n* bits in O(n&sup2;) time (aka O(lg(N)&sup2;)).
-Even if there isn't a constant bound on the leading {0,1} digits, especially when base 3 is included, this quadratic complexity is basically what you can expect.
+Even if there likely isn't a constant bound on the leading {0,1} digits, especially when base 3 is included, this quadratic complexity is basically what you can expect.
 
 ```javascript
 function check01_simple(guess, base) {
