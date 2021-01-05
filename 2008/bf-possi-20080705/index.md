@@ -48,7 +48,7 @@ Since the amount of brackets cannot exceed the specified amount of characters $n
 Since there can only be an integer amount of pairs $(j\in\mathbb{Z})$, we can use the floor function $\left\lfloor \frac{n}{2}\right\rfloor$.
 
 Thus, the solution may be written as
-$$\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\left(\binom{n}{2j}6^{n-2j}V(j,j)\right)\label{eq:first-solution}$$
+$$\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\left(\binom{n}{2j}6^{n-2j}V(j,j)\right)\label{eq:first-solution}\tag{1}$$
 
 
 Which still leaves $V(j,j)$ to be dealt with.
@@ -66,7 +66,7 @@ Without further explanation, it is the case that
 $$\begin{equation}V(b,c)=\begin{cases}
 1 & \mbox{if }b=0\mbox{,}\\
 {\displaystyle \sum_{k=b}^{c}}V(b-1,k) & \mbox{if }b>0\mbox{.}
-\end{cases}\label{eq:first-v}\end{equation}$$
+\end{cases}\label{eq:first-v}\end{equation}\tag{2}$$
 
 
 From there, we can work a few cases out.
@@ -213,7 +213,7 @@ Thus giving the new definition
 
 $$\begin{equation}
 V(j,j)=\dfrac{2^{j}}{(j+1)!}\prod_{k=1}^{j}(2k-1)
-\label{eq:final-v}\end{equation}$$
+\label{eq:final-v}\tag{3}\end{equation}$$
 
 
 Notice that ${\displaystyle \prod_{k=1}^{j}}(2k-1)$ is the product of the first $j$ positive odd numbers.
@@ -227,25 +227,23 @@ Now make the simplification:
 
 $$\begin{equation}
 \dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}
-\label{eq:prod-simp}\end{equation}$$
+\label{eq:prod-simp}\tag{4}\end{equation}$$
 
 And to get the **final answer**:
 
 $${\displaystyle \sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\dfrac{n!6^{n-2j}}{(n-2j)!j!(j+1)!}}$$
 
-**\ref{eq:prod-simp} Lemma: $\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}$$
+## Proof of Simplification
 
+We must prove a lemma that the \ref{eq:prod-simp} simplification is valid.
 
-\textbf{\underbar{Constraints}}: $j\in\mathbb{Z}$, $j\ge0$
+**Lemma.** $\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}$$, assuming that $j\in\mathbb{Z}^+$ and ${\displaystyle \prod_{k=1}^{0}}(2k-1)=1$.
 
-and assume ${\displaystyle \prod_{k=1}^{0}}(2k-1)=1$
+**Proof.** First show the theorem holds for $j=0$.
 
+Then do an inductive proof for $j>0$.
 
-\textbf{\underbar{Proof}}: First show the theorem holds for $j=0$
-
-Then do an inductive proof for $j>0$
-
-**Case**: Show that the statement is true for $j=0$.
+**Case.** Show that the statement is true for $j=0$.
 
 $$\begin{eqnarray*}
 \dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1) & = & \dfrac{2^{0}}{(2\cdot0)!}{\displaystyle \prod_{k=1}^{0}}(2k-1)\\
@@ -254,7 +252,7 @@ $$\begin{eqnarray*}
 \end{eqnarray*}$$
 
 
-**Inductive Basis**: Show that the statement holds
+**Inductive Basis.** Show that the statement holds
 for $j=1$
 
 $$\begin{eqnarray*}
@@ -266,7 +264,7 @@ $$\begin{eqnarray*}
 \end{eqnarray*}$$
 
 
-**Inductive Step**: Show that $\dfrac{2^{j+1}}{(2(j+1))!}{\displaystyle \prod_{k=1}^{j+1}}(2k-1)=\dfrac{1}{(j+1)!}$
+**Inductive Step.** Show that $\dfrac{2^{j+1}}{(2(j+1))!}{\displaystyle \prod_{k=1}^{j+1}}(2k-1)=\dfrac{1}{(j+1)!}$
 
 $$\begin{eqnarray*}
 \dfrac{2^{j+1}}{(2(j+1))!}\prod_{k=1}^{j+1}(2k-1) & = & \dfrac{2\cdot2^{j}}{(2j+2)!}(2(j+1)-1)\prod_{k=1}^{j}(2k-1)\\
