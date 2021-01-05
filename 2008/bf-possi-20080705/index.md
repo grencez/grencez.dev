@@ -237,7 +237,7 @@ $${\displaystyle \sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\dfrac{n!6^{
 
 We must prove a lemma that the \ref{eq:prod-simp} simplification is valid.
 
-**Lemma.** $\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}$$, assuming that $j\in\mathbb{Z}^+$ and ${\displaystyle \prod_{k=1}^{0}}(2k-1)=1$.
+**Lemma.** $\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}$, assuming that $j\in\mathbb{Z}^+$ and ${\displaystyle \prod_{k=1}^{0}}(2k-1)=1$.
 
 **Proof.** First show the theorem holds for $j=0$.
 
