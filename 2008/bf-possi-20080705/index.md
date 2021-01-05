@@ -65,7 +65,8 @@ $V(5,5)=42$ is harder to count "by hand" since thumbs don't reach far enough to 
 Without further explanation, it is the case that
 $$\begin{equation}V(b,c)=\begin{cases}
 1 & \mbox{if }b=0\mbox{,}\\
-{\displaystyle \sum_{k=b}^{c}}V(b-1,k) & \mbox{if }b>0\mbox{.}\end{cases}\end{equation}$$
+{\displaystyle \sum_{k=b}^{c}}V(b-1,k) & \mbox{if }b>0\mbox{.}
+\end{cases}\label{eq:first-v}\end{equation}$$
 
 
 From there, we can work a few cases out.
@@ -76,7 +77,8 @@ V(2,2) & = & {\displaystyle \sum_{k=2}^{2}}V(1,k)\\
  & = & {\displaystyle \sum_{k=1}^{2}}V(0,k)\\
  & = & V(0,1)+V(0,2)\\
  & = & 1+1\\
- & = & 2\end{eqnarray*}$$
+ & = & 2
+\end{eqnarray*}$$
 
 
 $$\begin{eqnarray*}
@@ -88,7 +90,8 @@ V(3,3) & = & {\displaystyle \sum_{k=3}^{3}}V(2,k)\\
  & = & {\displaystyle 2\sum_{k=1}^{2}}V(0,k)+V(0,3)\\
  & = & 2V(0,1)+2V(0,2)+V(0,3)\\
  & = & 2+2+1\\
- & = & 5\end{eqnarray*}$$
+ & = & 5
+\end{eqnarray*}$$
 
 
 Now I'll progressively skip more steps to save room and lead into
@@ -104,7 +107,8 @@ V(4,4) & = & V(3,4)\\
  & = & 5{\displaystyle \sum_{k=1}^{2}}V(0,k)+3{\displaystyle \sum_{k=3}^{3}}V(0,k)+{\displaystyle \sum_{k=4}^{4}}V(0,k)\\
  & = & 5V(0,1)+5V(0,2)+3V(0,3)+V(0,4)\\
  & = & 5+5+3+1\\
- & = & 14\end{eqnarray*}$$
+ & = & 14
+\end{eqnarray*}$$
 
 
 $$\begin{eqnarray*}
@@ -117,7 +121,8 @@ V(5,5) & = & V(4,5)\\
  & = & 14{\displaystyle \sum_{k=1}^{2}}V(0,k)+9{\displaystyle \sum_{k=3}^{3}}V(0,k)+4{\displaystyle \sum_{k=4}^{4}}V(0,k)+{\displaystyle \sum_{k=5}^{5}}V(0,5)\\
  & = & 14V(0,1)+14V(0,2)+9V(0,3)+4V(0,4)+V(0,5)\\
  & = & 14+14+9+4+1\\
- & = & 42\end{eqnarray*}$$
+ & = & 42
+\end{eqnarray*}$$
 
 
 Now without showing the summations at all,
@@ -130,12 +135,13 @@ V(6,6) & = & V(5,6)\\
  & = & 14V(1,2)+14V(1,3)+9V(1,4)+4V(1,5)+V(1,6)\\
  & = & 42V(0,1)+42V(0,2)+28V(0,3)+14V(0,4)+5V(0,5)+V(0,6)\\
  & = & 42+42+28+14+5+1\\
- & = & 132\end{eqnarray*}$$
+ & = & 132
+\end{eqnarray*}$$
 
 
-So following that pattern, reversing the order of coefficients, and starting with $j=2$ on the first row, the coefficients in the expansions for $V(j,j)$ are as follows
+So following that pattern, reversing the order of coefficients, and starting with $j=2$ on the first row, the coefficients in the expansions for $V(j,j)$ are as follows:
 
-$\begin{array}{ccccccccc}
+$$\begin{array}{ccccccccc}
 1 & 1\\
 1 & 2 & 2\\
 1 & 3 & 5 & 5\\
@@ -143,7 +149,8 @@ $\begin{array}{ccccccccc}
 1 & 5 & 14 & 28 & 42 & 42\\
 1 & 6 & 20 & 48 & 90 & 132 & 132\\
 1 & 7 & 27 & 75 & 165 & 297 & 429 & 429\\
-1 & 8 & 35 & 110 & 275 & 572 & 1001 & 1430 & 1430\end{array}$\\
+1 & 8 & 35 & 110 & 275 & 572 & 1001 & 1430 & 1430
+\end{array}$$
 
 
 Summing the coefficients of the expansion for $V(j,j)$ gives the highest coefficient of in the expansion of $V(j+1,j+1)$.
@@ -155,19 +162,22 @@ But there is a simpler pattern to jump from $V(j,j)$ to $V(j+1,j+1)$ which can b
 For $j=0,1,2,\ldots,7$, terms of $\dfrac{V(j+1,j+1)}{V(j,j)}$ look like:
 
 $$\begin{array}{cccccccc}
-\dfrac{1}{1}, & \dfrac{2}{1}, & \dfrac{5}{2}, & \dfrac{14}{5}, & \dfrac{42}{14}, & \dfrac{132}{42}, & \dfrac{429}{132}, & \dfrac{1430}{429}\end{array}$$
+\dfrac{1}{1}, & \dfrac{2}{1}, & \dfrac{5}{2}, & \dfrac{14}{5}, & \dfrac{42}{14}, & \dfrac{132}{42}, & \dfrac{429}{132}, & \dfrac{1430}{429}
+\end{array}$$
 
 
 Simplified, it's:
 
 $$\begin{array}{cccccccc}
-1, & 2, & \dfrac{5}{2}, & \dfrac{14}{5}, & 3, & \dfrac{22}{7}, & \dfrac{13}{4}, & \dfrac{10}{3}\end{array}$$
+1, & 2, & \dfrac{5}{2}, & \dfrac{14}{5}, & 3, & \dfrac{22}{7}, & \dfrac{13}{4}, & \dfrac{10}{3}
+\end{array}$$
 
 
 The pattern is a little easier to see in terms 3, 4, 5, and 6...
 
 $$\begin{array}{cccccccc}
-\dfrac{2}{2}, & \dfrac{6}{3}, & \dfrac{10}{4}, & \dfrac{14}{5}, & \dfrac{18}{6}, & \dfrac{22}{7}, & \dfrac{26}{8}, & \dfrac{30}{9}\end{array}$$
+\dfrac{2}{2}, & \dfrac{6}{3}, & \dfrac{10}{4}, & \dfrac{14}{5}, & \dfrac{18}{6}, & \dfrac{22}{7}, & \dfrac{26}{8}, & \dfrac{30}{9}
+\end{array}$$
 
 
 Very nice! So $\dfrac{V(j+1,j+1)}{V(j,j)}=\dfrac{4j+2}{j+2}=\dfrac{2(2j+1)}{j+2}$
@@ -178,7 +188,7 @@ Or equivalently, $V(j+1,j+1)=\dfrac{2(2j+1)}{j+2}V(j,j)$
 Shifting each $j$ to $j-1$ we get a recursive definition: $V(j,j)=\dfrac{2(2j-1)}{j+1}V(j-1,j-1)$
 
 
-Recalling that $V(0,c)=1$ from \eqref{eq:first-v}, we have a place
+Recalling that $V(0,c)=1$ from \ref{eq:first-v}, we have a place
 to stop the recursion.
 
 To get a feel for the pattern:
@@ -195,29 +205,35 @@ Generalized, it becomes
 $$\begin{eqnarray*}
 V(j,j) & = & \prod_{k=1}^{j}\dfrac{2(2k-1)}{k+1}\\
  & = & 2^{j}\prod_{k=1}^{j}\dfrac{2k-1}{k+1}\\
- & = & \dfrac{2^{j}}{(j+1)!}\prod_{k=1}^{j}(2k-1)\end{eqnarray*}$$
+ & = & \dfrac{2^{j}}{(j+1)!}\prod_{k=1}^{j}(2k-1)
+\end{eqnarray*}$$
 
 
 Thus giving the new definition
 
 $$\begin{equation}
-V(j,j)=\dfrac{2^{j}}{(j+1)!}\prod_{k=1}^{j}(2k-1)\label{eq:final-v}\end{equation}$$
+V(j,j)=\dfrac{2^{j}}{(j+1)!}\prod_{k=1}^{j}(2k-1)
+\label{eq:final-v}\end{equation}$$
 
 
 Notice that ${\displaystyle \prod_{k=1}^{j}}(2k-1)$ is the product of the first $j$ positive odd numbers.
 
-Now work from the full solution we have so far \eqref{eq:first-solution}, and substitute in the new definition for $V(j,j)$ \eqref{eq:final-v} to get:
+Now work from the full solution we have so far \ref{eq:first-solution}, and substitute in the new definition for $V(j,j)$ \ref{eq:final-v} to get:
 
 $${\displaystyle \sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\left(\binom{n}{2j}6^{n-2j}V(j,j)\right)}={\displaystyle \sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\left(\dfrac{n!6^{n-2j}}{(2j)!(n-2j)!}\cdot\dfrac{2^{j}}{(j+1)!}{\displaystyle \prod_{k=1}^{j}(2k-1)}\right)}$$
 
 
-Now make the simplification: $$\begin{equation}\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}\label{eq:prod-simp}\end{equation}$$
+Now make the simplification:
+
+$$\begin{equation}
+\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}
+\label{eq:prod-simp}\end{equation}$$
 
 And to get the **final answer**:
 
 $${\displaystyle \sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\dfrac{n!6^{n-2j}}{(n-2j)!j!(j+1)!}}$$
 
-**Lemma**: \newpage{}\eqref{eq:prod-simp}\textbf{\underbar{Lemma}}: $\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}$$
+**\ref{eq:prod-simp} Lemma: $\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}$$
 
 
 \textbf{\underbar{Constraints}}: $j\in\mathbb{Z}$, $j\ge0$
@@ -234,7 +250,8 @@ Then do an inductive proof for $j>0$
 $$\begin{eqnarray*}
 \dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1) & = & \dfrac{2^{0}}{(2\cdot0)!}{\displaystyle \prod_{k=1}^{0}}(2k-1)\\
  & = & \dfrac{1}{0!}\cdot1\\
- & = & \dfrac{1}{j!}\end{eqnarray*}$$
+ & = & \dfrac{1}{j!}
+\end{eqnarray*}$$
 
 
 **Inductive Basis**: Show that the statement holds
@@ -245,7 +262,8 @@ $$\begin{eqnarray*}
  & = & \dfrac{2}{2!}(2\cdot1-1)\\
  & = & \dfrac{1}{1}\cdot1\\
  & = & \dfrac{1}{1!}\\
- & = & \dfrac{1}{j!}\end{eqnarray*}$$
+ & = & \dfrac{1}{j!}
+\end{eqnarray*}$$
 
 
 **Inductive Step**: Show that $\dfrac{2^{j+1}}{(2(j+1))!}{\displaystyle \prod_{k=1}^{j+1}}(2k-1)=\dfrac{1}{(j+1)!}$
@@ -254,13 +272,15 @@ $$\begin{eqnarray*}
 \dfrac{2^{j+1}}{(2(j+1))!}\prod_{k=1}^{j+1}(2k-1) & = & \dfrac{2\cdot2^{j}}{(2j+2)!}(2(j+1)-1)\prod_{k=1}^{j}(2k-1)\\
  & = & \dfrac{2\cdot2^{j}(2j+2-1)}{(2j+2)(2j+1)(2j)!}\prod_{k=1}^{j}(2k-1)\\
  & = & \dfrac{2\cdot2^{j}(2j+1)}{2(j+1)(2j+1)(2j)!}\prod_{k=1}^{j}(2k-1)\\
- & = & \dfrac{2^{j}}{(j+1)(2j)!}\prod_{k=1}^{j}(2k-1)\end{eqnarray*}$$
+ & = & \dfrac{2^{j}}{(j+1)(2j)!}\prod_{k=1}^{j}(2k-1)
+\end{eqnarray*}$$
 
 Since $\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}$ by the inductive hypothesis,
 
 $$\begin{eqnarray*}
 \dfrac{2^{j}}{(j+1)(2j)!}\prod_{k=1}^{j}(2k-1) & = & \dfrac{1}{(j+1)j!}\\
- & = & \dfrac{1}{(j+1)!}\end{eqnarray*}$$
+ & = & \dfrac{1}{(j+1)!}
+\end{eqnarray*}$$
 
 
 Therefore:
