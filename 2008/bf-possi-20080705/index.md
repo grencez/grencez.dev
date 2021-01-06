@@ -24,7 +24,7 @@ How many valid BF programs can be written using $n$ characters?
 
 To avoid burying the lead, the answer is:
 
-$${\displaystyle \sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\dfrac{n!6^{n-2j}}{(n-2j)!j!(j+1)!}}$$
+$$\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\dfrac{n!6^{n-2j}}{(n-2j)!j!(j+1)!}$$
 
 ## Solution Process
 
