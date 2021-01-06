@@ -24,7 +24,7 @@ How many valid BF programs can be written using $n$ characters?
 
 To avoid burying the lead, the answer is:
 
-$$\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\dfrac{n!6^{n-2j}}{(n-2j)!j!(j+1)!}$$
+$$\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\frac{n!6^{n-2j}}{(n-2j)!j!(j+1)!}$$
 
 ## Solution Process
 
@@ -65,16 +65,16 @@ $V(5,5)=42$ is harder to count "by hand" since thumbs don't reach far enough to 
 Without further explanation, it is the case that
 $$\begin{equation}V(b,c)=\begin{cases}
 1 & \mbox{if }b=0\mbox{,}\\
-{\displaystyle \sum_{k=b}^{c}}V(b-1,k) & \mbox{if }b>0\mbox{.}
+\sum_{k=b}^{c} V(b-1,k) & \mbox{if }b>0\mbox{.}
 \end{cases}\label{eq:first-v}\end{equation}\tag{2}$$
 
 
 From there, we can work a few cases out.
 
 $$\begin{eqnarray*}
-V(2,2) & = & {\displaystyle \sum_{k=2}^{2}}V(1,k)\\
+V(2,2) & = & \sum_{k=2}^{2}V(1,k)\\
  & = & V(1,2)\\
- & = & {\displaystyle \sum_{k=1}^{2}}V(0,k)\\
+ & = & \sum_{k=1}^{2}V(0,k)\\
  & = & V(0,1)+V(0,2)\\
  & = & 1+1\\
  & = & 2
@@ -82,12 +82,12 @@ V(2,2) & = & {\displaystyle \sum_{k=2}^{2}}V(1,k)\\
 
 
 $$\begin{eqnarray*}
-V(3,3) & = & {\displaystyle \sum_{k=3}^{3}}V(2,k)\\
+V(3,3) & = & \sum_{k=3}^{3} V(2,k)\\
  & = & V(2,3)\\
- & = & {\displaystyle \sum_{k=2}^{3}}V(1,k)\\
+ & = & \sum_{k=2}^{3} V(1,k)\\
  & = & V(1,2)+V(1,3)\\
- & = & {\displaystyle \sum_{k=1}^{2}}V(0,k)+{\displaystyle \sum_{k=1}^{3}}V(0,k)\\
- & = & {\displaystyle 2\sum_{k=1}^{2}}V(0,k)+V(0,3)\\
+ & = & \sum_{k=1}^{2} V(0,k)+\sum_{k=1}^{3} V(0,k)\\
+ & = & 2\sum_{k=1}^{2} V(0,k)+V(0,3)\\
  & = & 2V(0,1)+2V(0,2)+V(0,3)\\
  & = & 2+2+1\\
  & = & 5
@@ -99,12 +99,12 @@ the generalization.
 
 $$\begin{eqnarray*}
 V(4,4) & = & V(3,4)\\
- & = & {\displaystyle \sum_{k=3}^{4}}V(2,k)=V(2,3)+V(2,4)\\
- & = & {\displaystyle \sum_{k=2}^{3}}V(1,k)+{\displaystyle \sum_{k=2}^{4}}V(1,k)\\
- & = & 2{\displaystyle \sum_{k=2}^{3}}V(1,k)+V(1,4)\\
+ & = & \sum_{k=3}^{4} V(2,k)=V(2,3)+V(2,4)\\
+ & = & \sum_{k=2}^{3} V(1,k)+\sum_{k=2}^{4} V(1,k)\\
+ & = & 2\sum_{k=2}^{3} V(1,k)+V(1,4)\\
  & = & 2V(1,2)+2V(1,3)+V(1,4)\\
- & = & 2{\displaystyle \sum_{k=1}^{2}}V(0,k)+2{\displaystyle \sum_{k=1}^{3}}V(0,k)+{\displaystyle \sum_{k=1}^{4}}V(0,k)\\
- & = & 5{\displaystyle \sum_{k=1}^{2}}V(0,k)+3{\displaystyle \sum_{k=3}^{3}}V(0,k)+{\displaystyle \sum_{k=4}^{4}}V(0,k)\\
+ & = & 2\sum_{k=1}^{2} V(0,k)+2\sum_{k=1}^{3} V(0,k)+\sum_{k=1}^{4} V(0,k)\\
+ & = & 5\sum_{k=1}^{2} V(0,k)+3\sum_{k=3}^{3} V(0,k)+\sum_{k=4}^{4} V(0,k)\\
  & = & 5V(0,1)+5V(0,2)+3V(0,3)+V(0,4)\\
  & = & 5+5+3+1\\
  & = & 14
@@ -113,12 +113,12 @@ V(4,4) & = & V(3,4)\\
 
 $$\begin{eqnarray*}
 V(5,5) & = & V(4,5)\\
- & = & {\displaystyle \sum_{k=4}^{5}}V(3,k)=V(3,4)+V(3,5)\\
- & = & 2{\displaystyle \sum_{k=3}^{4}}V(2,k)+V(2,5)\\
+ & = & \sum_{k=4}^{5} V(3,k)=V(3,4)+V(3,5)\\
+ & = & 2\sum_{k=3}^{4} V(2,k)+V(2,5)\\
  & = & 2V(2,3)+2V(2,4)+V(2,5)\\
- & = & 5{\displaystyle \sum_{k=2}^{3}}V(1,k)+2V(1,4)+V(1,4)+V(1,5)\\
+ & = & 5\sum_{k=2}^{3} V(1,k)+2V(1,4)+V(1,4)+V(1,5)\\
  & = & 5V(1,2)+5V(1,3)+3V(1,4)+V(1,5)\\
- & = & 14{\displaystyle \sum_{k=1}^{2}}V(0,k)+9{\displaystyle \sum_{k=3}^{3}}V(0,k)+4{\displaystyle \sum_{k=4}^{4}}V(0,k)+{\displaystyle \sum_{k=5}^{5}}V(0,5)\\
+ & = & 14\sum_{k=1}^{2} V(0,k)+9\sum_{k=3}^{3} V(0,k)+4\sum_{k=4}^{4} V(0,k)+\sum_{k=5}^{5} V(0,5)\\
  & = & 14V(0,1)+14V(0,2)+9V(0,3)+4V(0,4)+V(0,5)\\
  & = & 14+14+9+4+1\\
  & = & 42
@@ -162,21 +162,21 @@ But there is a simpler pattern to jump from $V(j,j)$ to $V(j+1,j+1)$ which can b
 For $j=0,1,2,\ldots,7$, terms of $\dfrac{V(j+1,j+1)}{V(j,j)}$ look like:
 
 $$\begin{array}{cccccccc}
-\dfrac{1}{1}, & \dfrac{2}{1}, & \dfrac{5}{2}, & \dfrac{14}{5}, & \dfrac{42}{14}, & \dfrac{132}{42}, & \dfrac{429}{132}, & \dfrac{1430}{429}
+\frac{1}{1}, & \frac{2}{1}, & \frac{5}{2}, & \frac{14}{5}, & \frac{42}{14}, & \frac{132}{42}, & \frac{429}{132}, & \frac{1430}{429}
 \end{array}$$
 
 
 Simplified, it's:
 
 $$\begin{array}{cccccccc}
-1, & 2, & \dfrac{5}{2}, & \dfrac{14}{5}, & 3, & \dfrac{22}{7}, & \dfrac{13}{4}, & \dfrac{10}{3}
+1, & 2, & \frac{5}{2}, & \frac{14}{5}, & 3, & \frac{22}{7}, & \frac{13}{4}, & \frac{10}{3}
 \end{array}$$
 
 
 The pattern is a little easier to see in terms 3, 4, 5, and 6...
 
 $$\begin{array}{cccccccc}
-\dfrac{2}{2}, & \dfrac{6}{3}, & \dfrac{10}{4}, & \dfrac{14}{5}, & \dfrac{18}{6}, & \dfrac{22}{7}, & \dfrac{26}{8}, & \dfrac{30}{9}
+\frac{2}{2}, & \frac{6}{3}, & \frac{10}{4}, & \frac{14}{5}, & \frac{18}{6}, & \frac{22}{7}, & \frac{26}{8}, & \frac{30}{9}
 \end{array}$$
 
 
@@ -195,24 +195,24 @@ To get a feel for the pattern:
 
 $$V(0,0)=1$$
 
-$$V(1,1)=\dfrac{2(2\cdot1-1)}{1+1}\cdot V(0,0)=\dfrac{2(2\cdot1-1)}{1+1}\cdot 1$$
+$$V(1,1)=\frac{2(2\cdot1-1)}{1+1}\cdot V(0,0)=\frac{2(2\cdot1-1)}{1+1}\cdot 1$$
 
-$$V(2,2)=\dfrac{2(2\cdot2-1)}{2+1}V(1,1)=\dfrac{2(2\cdot2-1)}{2+1}\cdot\dfrac{2(2\cdot1-1)}{1+1}$$
+$$V(2,2)=\frac{2(2\cdot2-1)}{2+1}V(1,1)=\frac{2(2\cdot2-1)}{2+1}\cdot\frac{2(2\cdot1-1)}{1+1}$$
 
 
 Generalized, it becomes
 
 $$\begin{eqnarray*}
-V(j,j) & = & \prod_{k=1}^{j}\dfrac{2(2k-1)}{k+1}\\
- & = & 2^{j}\prod_{k=1}^{j}\dfrac{2k-1}{k+1}\\
- & = & \dfrac{2^{j}}{(j+1)!}\prod_{k=1}^{j}(2k-1)
+V(j,j) & = & \prod_{k=1}^{j}\frac{2(2k-1)}{k+1}\\
+ & = & 2^{j}\prod_{k=1}^{j}\frac{2k-1}{k+1}\\
+ & = & \frac{2^{j}}{(j+1)!}\prod_{k=1}^{j}(2k-1)
 \end{eqnarray*}$$
 
 
 Thus giving the new definition
 
 $$\begin{equation}
-V(j,j)=\dfrac{2^{j}}{(j+1)!}\prod_{k=1}^{j}(2k-1)
+V(j,j)=\frac{2^{j}}{(j+1)!}\prod_{k=1}^{j}(2k-1)
 \label{eq:final-v}\tag{3}\end{equation}$$
 
 
@@ -220,18 +220,18 @@ Notice that ${\displaystyle \prod_{k=1}^{j}}(2k-1)$ is the product of the first 
 
 Now work from the full solution we have so far \ref{eq:first-solution}, and substitute in the new definition for $V(j,j)$ \ref{eq:final-v} to get:
 
-$${\displaystyle \sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\left(\binom{n}{2j}6^{n-2j}V(j,j)\right)}={\displaystyle \sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\left(\dfrac{n!6^{n-2j}}{(2j)!(n-2j)!}\cdot\dfrac{2^{j}}{(j+1)!}{\displaystyle \prod_{k=1}^{j}(2k-1)}\right)}$$
+$$\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor}\left(\binom{n}{2j}6^{n-2j}V(j,j)\right)=\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\left(\frac{n!6^{n-2j}}{(2j)!(n-2j)!}\cdot\frac{2^{j}}{(j+1)!} \prod_{k=1}^{j}(2k-1)\right)$$
 
 
 Now make the simplification:
 
 $$\begin{equation}
-\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}
+\frac{2^{j}}{(2j)!} \prod_{k=1}^{j} (2k-1)=\frac{1}{j!}
 \label{eq:prod-simp}\tag{4}\end{equation}$$
 
 And to get the **final answer**:
 
-$${\displaystyle \sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\dfrac{n!6^{n-2j}}{(n-2j)!j!(j+1)!}}$$
+$$\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\frac{n!6^{n-2j}}{(n-2j)!j!(j+1)!}$$
 
 ## Proof of Simplification
 
@@ -246,9 +246,9 @@ Then do an inductive proof for $j>0$.
 **Case.** Show that the statement is true for $j=0$.
 
 $$\begin{eqnarray*}
-\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1) & = & \dfrac{2^{0}}{(2\cdot0)!}{\displaystyle \prod_{k=1}^{0}}(2k-1)\\
- & = & \dfrac{1}{0!}\cdot1\\
- & = & \dfrac{1}{j!}
+\frac{2^{j}}{(2j)!} \prod_{k=1}^{j} (2k-1) & = & \frac{2^{0}}{(2\cdot0)!} \prod_{k=1}^{0} (2k-1)\\
+ & = & \frac{1}{0!}\cdot1\\
+ & = & \frac{1}{j!}
 \end{eqnarray*}$$
 
 
@@ -256,30 +256,30 @@ $$\begin{eqnarray*}
 for $j=1$
 
 $$\begin{eqnarray*}
-\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1) & = & \dfrac{2^{1}}{(2\cdot1)!}\prod_{k=1}^{1}(2k-1)\\
- & = & \dfrac{2}{2!}(2\cdot1-1)\\
- & = & \dfrac{1}{1}\cdot1\\
- & = & \dfrac{1}{1!}\\
- & = & \dfrac{1}{j!}
+\frac{2^{j}}{(2j)!} \prod_{k=1}^{j} (2k-1) & = & \frac{2^{1}}{(2\cdot1)!}\prod_{k=1}^{1}(2k-1)\\
+ & = & \frac{2}{2!}(2\cdot1-1)\\
+ & = & \frac{1}{1}\cdot1\\
+ & = & \frac{1}{1!}\\
+ & = & \frac{1}{j!}
 \end{eqnarray*}$$
 
 
-**Inductive Step.** Show that $\dfrac{2^{j+1}}{(2(j+1))!}{\displaystyle \prod_{k=1}^{j+1}}(2k-1)=\dfrac{1}{(j+1)!}$
+**Inductive Step.** Show that $\dfrac{2^{j+1}}{(2(j+1))!} \prod_{k=1}^{j+1} (2k-1)=\dfrac{1}{(j+1)!}$
 
 $$\begin{eqnarray*}
-\dfrac{2^{j+1}}{(2(j+1))!}\prod_{k=1}^{j+1}(2k-1) & = & \dfrac{2\cdot2^{j}}{(2j+2)!}(2(j+1)-1)\prod_{k=1}^{j}(2k-1)\\
- & = & \dfrac{2\cdot2^{j}(2j+2-1)}{(2j+2)(2j+1)(2j)!}\prod_{k=1}^{j}(2k-1)\\
- & = & \dfrac{2\cdot2^{j}(2j+1)}{2(j+1)(2j+1)(2j)!}\prod_{k=1}^{j}(2k-1)\\
- & = & \dfrac{2^{j}}{(j+1)(2j)!}\prod_{k=1}^{j}(2k-1)
+\frac{2^{j+1}}{(2(j+1))!}\prod_{k=1}^{j+1}(2k-1) & = & \frac{2\cdot2^{j}}{(2j+2)!}(2(j+1)-1)\prod_{k=1}^{j}(2k-1)\\
+ & = & \frac{2\cdot2^{j}(2j+2-1)}{(2j+2)(2j+1)(2j)!}\prod_{k=1}^{j}(2k-1)\\
+ & = & \frac{2\cdot2^{j}(2j+1)}{2(j+1)(2j+1)(2j)!}\prod_{k=1}^{j}(2k-1)\\
+ & = & \frac{2^{j}}{(j+1)(2j)!}\prod_{k=1}^{j}(2k-1)
 \end{eqnarray*}$$
 
-Since $\dfrac{2^{j}}{(2j)!}{\displaystyle \prod_{k=1}^{j}}(2k-1)=\dfrac{1}{j!}$ by the inductive hypothesis,
+Since $\dfrac{2^{j}}{(2j)!} \prod_{k=1}^{j} (2k-1)=\dfrac{1}{j!}$ by the inductive hypothesis,
 
 $$\begin{eqnarray*}
-\dfrac{2^{j}}{(j+1)(2j)!}\prod_{k=1}^{j}(2k-1) & = & \dfrac{1}{(j+1)j!}\\
- & = & \dfrac{1}{(j+1)!}
+\frac{2^{j}}{(j+1)(2j)!}\prod_{k=1}^{j}(2k-1) & = & \frac{1}{(j+1)j!}\\
+ & = & \frac{1}{(j+1)!}
 \end{eqnarray*}$$
 
 
 Therefore:
-$$\dfrac{2^{j+1}}{(2(j+1))!}{\displaystyle \prod_{k=1}^{j+1}}(2k-1)=\dfrac{1}{(j+1)!}$$
+$$\frac{2^{j+1}}{(2(j+1))!}\prod_{k=1}^{j+1}(2k-1)=\frac{1}{(j+1)!}$$
