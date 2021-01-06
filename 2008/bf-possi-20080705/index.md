@@ -48,8 +48,8 @@ Since the amount of brackets cannot exceed the specified amount of characters $n
 Since there can only be an integer amount of pairs $(j\in\mathbb{Z})$, we can use the floor function $\left\lfloor \frac{n}{2}\right\rfloor$.
 
 Thus, the solution may be written as
-$$\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\left(\binom{n}{2j}6^{n-2j}V(j,j)\right)\label{eq:first-solution}\tag{1}$$
 
+$$\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\left(\binom{n}{2j}6^{n-2j}V(j,j)\right)\label{eq:first-solution}\tag{1}$$
 
 Which still leaves $V(j,j)$ to be dealt with.
 When $j=0$, it must be true that $V(j,j)=1$ for the first term in the above summation to make sense.
@@ -63,6 +63,7 @@ It helped to attack the problem vertically for some reason.
 $V(5,5)=42$ is harder to count "by hand" since thumbs don't reach far enough to keep the layout straight.
 
 Without further explanation, it is the case that
+
 $$\begin{equation}V(b,c)=\begin{cases}
 1 & \mbox{if }b=0\mbox{,}\\
 \sum_{k=b}^{c} V(b-1,k) & \mbox{if }b>0\mbox{.}
@@ -199,7 +200,6 @@ $$V(1,1)=\frac{2(2\cdot1-1)}{1+1}\cdot V(0,0)=\frac{2(2\cdot1-1)}{1+1}\cdot 1$$
 
 $$V(2,2)=\frac{2(2\cdot2-1)}{2+1}V(1,1)=\frac{2(2\cdot2-1)}{2+1}\cdot\frac{2(2\cdot1-1)}{1+1}$$
 
-
 Generalized, it becomes
 
 $$\begin{eqnarray*}
@@ -208,20 +208,17 @@ V(j,j) & = & \prod_{k=1}^{j}\frac{2(2k-1)}{k+1}\\
  & = & \frac{2^{j}}{(j+1)!}\prod_{k=1}^{j}(2k-1)
 \end{eqnarray*}$$
 
-
 Thus giving the new definition
 
 $$\begin{equation}
 V(j,j)=\frac{2^{j}}{(j+1)!}\prod_{k=1}^{j}(2k-1)
 \label{eq:final-v}\tag{3}\end{equation}$$
 
-
 Notice that ${\displaystyle \prod_{k=1}^{j}}(2k-1)$ is the product of the first $j$ positive odd numbers.
 
 Now work from the full solution we have so far \ref{eq:first-solution}, and substitute in the new definition for $V(j,j)$ \ref{eq:final-v} to get:
 
 $$\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor}\left(\binom{n}{2j}6^{n-2j}V(j,j)\right)=\sum_{j=0}^{\left\lfloor \frac{n}{2}\right\rfloor }\left(\frac{n!6^{n-2j}}{(2j)!(n-2j)!}\cdot\frac{2^{j}}{(j+1)!} \prod_{k=1}^{j}(2k-1)\right)$$
-
 
 Now make the simplification:
 
@@ -282,4 +279,5 @@ $$\begin{eqnarray*}
 
 
 Therefore:
+
 $$\frac{2^{j+1}}{(2(j+1))!}\prod_{k=1}^{j+1}(2k-1)=\frac{1}{(j+1)!}$$
