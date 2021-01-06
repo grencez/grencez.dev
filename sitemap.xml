@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://grencez.dev</loc> <lastmod>2020-10-26</lastmod> <changefreq>weekly</changefreq></url>
+  <url><loc>https://grencez.dev</loc> <lastmod>2021-01-05</lastmod> <changefreq>weekly</changefreq></url>
   <url><loc>https://grencez.dev/about</loc></url>
   <url><loc>https://grencez.dev/2020</loc> <priority>0.2</priority></url>
   <url><loc>https://grencez.dev/2020/ffmpeg-merge-video-20201122</loc> <lastmod>2020-11-23</lastmod></url>
@@ -26,5 +26,8 @@
   <url><loc>https://grencez.dev/2015/z3-solves-sudoku-20150129</loc> <lastmod>2020-10-25</lastmod> <priority>0.8</priority></url>
   <url><loc>https://grencez.dev/2014</loc> <priority>0.2</priority></url>
   <url><loc>https://grencez.dev/2014/gentoo-install-20140305</loc> <lastmod>2014-03-05</lastmod> <priority>0.3</priority></url>
+  <url><loc>https://grencez.dev/2008</loc> <priority>0.2</priority></url>
+  <url><loc>https://grencez.dev/2008/bf-possi-20080705</loc> <lastmod>2021-01-05</lastmod></url>
+  <url><loc>https://grencez.dev/2008/polypow-20080602</loc> <lastmod>2021-01-05</lastmod></url>
 </urlset>
 

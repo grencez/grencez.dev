@@ -1,6 +1,6 @@
 ---
 canonical_url: https://grencez.dev
-date: 2021-01-01
+date: 2021-01-05
 description: Brief reports of Linux tools, configurations, and code that worked for me at some point.
 ---
 
@@ -32,4 +32,5 @@ description: Brief reports of Linux tools, configurations, and code that worked 
 * [2016](2016/index.md)
 * [2015](2015/index.md)
 * [2014](2014/index.md)
+* [2008](2008/index.md)
 
