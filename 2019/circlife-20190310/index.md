@@ -2,7 +2,7 @@
 canonical_url: https://grencez.dev/2019/circlife-20190310
 date: 2019-03-10
 description: A simple, restricted, yet still undecidable version of the Periodic Domino Problem.
-last_modified at: 2021-01-01
+last_modified at: 2021-01-10
 ---
 
 {%- include mathjax.html -%}
@@ -16,6 +16,8 @@ A cell's genome is chosen from a finite set based on its parents' genomes.
 Furthermore, to achieve diversity, a cell's genome must be incompatible with its parents and grandparents.
 Cells can also die, which is necessary since cells can't pass by each other on the planet's 1-dimensional surface.
 Given these rules and those for compatibility/spawning, does there exist some number of cells with genomes that can sustain life indefinitely?
+
+**Theorem:** Is it possible to learn this answer? Not from a Turing machine. It's undecidable!
 
 This behavior is summarized by a partial function $\xi$ that evaluates to $\xi(a,b)=c$ iff adjacent cells with genomes $a$ and $b$ can spawn a cell with genome $c$.
 $\xi$ has the following properties:
