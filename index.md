@@ -29,6 +29,7 @@ description: Brief reports of Linux tools, configurations, and code that worked 
 
 * [2020](2020/index.md)
 * [2019](2019/index.md)
+* [2018](2018/index.md)
 * [2016](2016/index.md)
 * [2015](2015/index.md)
 * [2014](2014/index.md)

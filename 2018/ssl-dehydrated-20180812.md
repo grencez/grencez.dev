@@ -2,10 +2,10 @@
 canonical_url: https://grencez.dev/2018/ssl-dehydrated-20180812
 date: 2018-08-12
 last_modified_at: 2021-01-18
-description: How to  programs from source in Linux as a normal user with GNU Stow.
+description: How to generate and install an SSL certificate signed by Let's Encrypt.
 ---
 
-# Generate a Signed SSL Certificate
+# Generate a Signed SSL Certificate with Dehydrated
 
 Date: 2018-08-12
 
@@ -21,6 +21,8 @@ This page gives you easy-mode Linux commands to set up SSL with the following st
    1. Generate an SSL certificate.
    1. Get it signed by Let's Encrypt.
 1. Install the new certificate.
+
+**Table of Contents**
 
 - [Initial Setup](#initial)
   - [Create "Well-Known" Directory](#mkdir)
@@ -119,7 +121,8 @@ rm mynewcert.pem
 
 ### Install Certificate (CPanel) {#cpanel}
 
-I (used to) have to go to `http://$domain/cpanel`, login, click SSL/TLS, click Install and Manage SSL, select my domain, and then copy/paste the `cert.pem` and `privkey.pem` files into the Certificate and Private Key fields.
+I haven't used CPanel for a while, but my process used to be:
+Navigate to `http://$domain/cpanel`, login, click SSL/TLS, click Install and Manage SSL, select the domain, and then copy/paste the `cert.pem` and `privkey.pem` files into the Certificate and Private Key fields.
 The file contents can quickly be copied using the first two `xsel` commands.
 
 ```shell
@@ -128,4 +131,8 @@ cat "certs/$domain/privkey.pem" | xsel -b
 echo 'nothing to see here' | xsel -b  # Clear the clipboard selection.
 ```
 
-Those `xsel` commands don't work on a webserver, but you can just as easily type `ssh $domain cat "path/to/dehydrated/certs/$domain/cert.pem" | xsel -b` from your own machine.
+Those `xsel` commands don't work on a webserver, but you can just as easily `cat` via `ssh` from your local machine:
+
+```shell
+ssh $domain cat "path/to/dehydrated/certs/$domain/cert.pem" | xsel -b`
+```
