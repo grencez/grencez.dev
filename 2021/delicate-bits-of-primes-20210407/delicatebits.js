@@ -88,7 +88,7 @@ function is_prime(p) {
     return false;
   }
   for (let i = 6n; i*i < p; i=i+6n) {
-    if (p % (i+1n) == 0 || p % (i-1n) == 0) {
+    if (p % (i+1n) == 0 || p % (i+5n) == 0) {
       return false;
     }
   }

@@ -2,6 +2,7 @@
 canonical_url: https://grencez.dev/2020/freshtomato-client-router-20201025
 date: 2020-10-25
 description: How I set up FreshTomato on a router to act as a Wi-Fi adapter.
+last_modified_at: 2021-10-30
 ---
 
 # Setting up FreshTomato on a router to act as a wireless adapter
@@ -21,14 +22,14 @@ Turns out, yes. [FreshTomato](https://freshtomato.org).
 
 ## Steps
 
-**Install.** I followed https://easylinuxtipsproject.blogspot.com/p/tomato.html#ID3 pretty closely.
+**Install.** I followed [https://easylinuxtipsproject.blogspot.com/p/tomato.html#ID3](https://easylinuxtipsproject.blogspot.com/p/tomato.html#ID3) pretty closely.
 
 1. [https://wiki.freshtomato.org/doku.php/hardware_compatibility](https://wiki.freshtomato.org/doku.php/hardware_compatibility) says that the `K26RT-N` version of FreshTomato supports Linksys E1200 v2.
 1. Grab the latest iteration of that from [https://freshtomato.org/downloads](https://freshtomato.org/downloads).
    1. I used: [https://freshtomato.org/downloads/freshtomato-mips/2020/2020.6/K26RT-N/Linksys%20E-series/freshtomato-E1200v2-NVRAM64K_RT-N5x-MIPSR2-2020.6-Max.zip](https://freshtomato.org/downloads/freshtomato-mips/2020/2020.6/K26RT-N/Linksys%20E-series/freshtomato-E1200v2-NVRAM64K_RT-N5x-MIPSR2-2020.6-Max.zip)
    1. Then unzip it. We'll use the `.bin` file.
 1. Hard reset (hold down the recessed reset button until lights flash. Then power cycle.
-1. DD-WRT shows up at [http://92.168.1.1](http://92.168.1.1) now.
+1. DD-WRT shows up at [http://192.168.1.1](http://192.168.1.1) now.
 1. `Administration -> Firmware Upgrade` tab.
    1. `Don't reset` after finishing. We'll hard reset to wipe settings.
    1. Select the FreshTomato file ending in `.bin`.

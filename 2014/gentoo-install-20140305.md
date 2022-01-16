@@ -88,6 +88,8 @@ choose a mirror, and get stage3 tarball at `releases/x86/2007.0/stages/` press `
 Do a checksum:
 
 ```shell
+# NOTE: You'll probably want to use `sha512sum` instead.
+#   Just `cat` the DIGESTS file to see what kind(s) of hashes it has.
 md5sum -c stage3-i686-2007.0.tar.bz2.DIGESTS
 ```
 
@@ -128,10 +130,11 @@ mirrorselect -i -r -o >> /mnt/gentoo/etc/portage/make.conf
 ### Copy DNS Info
 
 ```shell
-cp -L /etc/resolv.conf /mnt/gentoo/etc/
+cp -p mode -L /etc/resolv.conf /mnt/gentoo/etc/
 ```
 
-(the -L option ensures no symbolic link)
+(the `-L` option ensures no symbolic link,
+and `-p mode` ensures that the file remains readable for normal users)
 
 ### Mount /proc and /dev
 
@@ -291,10 +294,10 @@ emerge mlocate
 
 ### File System Tools
 
-possi-ex: xfsprogs, reiserfsprogs, jfsutils
+possi-ex: xfsprogs, jfsutils
 
 ```shell
-emerge reiserfsprogs
+emerge xfsprogs
 ```
 
 ### DHCP Client
