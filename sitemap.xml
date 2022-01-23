@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://grencez.dev</loc> <lastmod>2021-01-05</lastmod> <changefreq>weekly</changefreq></url>
   <url><loc>https://grencez.dev/about</loc></url>
+  <url><loc>https://grencez.dev/2022</loc> <priority>0.2</priority></url>
+  <url><loc>https://grencez.dev/2022/sxproto-20220122</loc> <lastmod>2022-01-22</lastmod></url>
   <url><loc>https://grencez.dev/2020</loc> <priority>0.2</priority></url>
   <url><loc>https://grencez.dev/2020/ffmpeg-merge-video-20201122</loc> <lastmod>2020-11-23</lastmod></url>
   <url><loc>https://grencez.dev/2020/freshtomato-client-router-20201025</loc> <lastmod>2020-10-25</lastmod></url>
