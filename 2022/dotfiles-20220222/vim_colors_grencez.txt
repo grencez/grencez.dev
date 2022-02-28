@@ -1,0 +1,56 @@
+" Vim color file
+" Maintainer:    Alex Klinkhamer <grencez@codelove.org>
+
+" affects tabs
+set bg=dark
+
+hi clear
+if exists("syntax_on")
+    syntax reset
+endif
+
+let g:colors_name = 'grencez'
+
+hi Comment      ctermfg=red
+hi Constant     ctermfg=magenta
+hi Special      ctermfg=darkyellow
+hi Identifier   ctermfg=yellow
+hi Statement    ctermfg=yellow
+hi PreProc      ctermfg=darkcyan
+hi Type         ctermfg=green
+
+hi Underlined   cterm=underline term=underline
+hi Cursor       ctermfg=black ctermbg=yellow
+hi lCursor      ctermfg=black ctermbg=white
+" CursorIM
+hi Normal        ctermfg=lightgrey
+hi ErrorMsg      ctermfg=white ctermbg=lightblue
+hi Visual        ctermfg=lightblue ctermbg=fg cterm=reverse
+hi VisualNOS     ctermfg=lightblue ctermbg=fg cterm=reverse,underline
+hi Todo          ctermfg=red  ctermbg=darkblue
+hi Search        ctermfg=white ctermbg=darkblue cterm=underline term=underline
+hi IncSearch     ctermfg=darkblue ctermbg=gray
+
+hi SpecialKey   ctermfg=cyan
+hi Directory    ctermfg=cyan
+hi Title        ctermfg=magenta cterm=bold
+hi WarningMsg   ctermfg=red
+hi WildMenu     ctermfg=yellow ctermbg=black cterm=none term=none
+hi ModeMsg      ctermfg=lightblue
+hi MoreMsg      ctermfg=darkgreen
+hi Question     ctermfg=green
+hi NonText      ctermfg=darkblue
+
+hi StatusLine   ctermfg=red   ctermbg=white
+hi StatusLineNC ctermfg=black ctermbg=grey
+hi VertSplit    ctermfg=black ctermbg=grey
+
+hi Folded       ctermfg=darkgrey ctermbg=black cterm=bold term=bold
+hi FoldColumn   ctermfg=darkgrey ctermbg=black cterm=bold term=bold
+hi LineNr       ctermfg=green                  cterm=none
+
+hi DiffAdd      ctermbg=green ctermfg=black
+hi DiffChange   ctermbg=lightmagenta ctermfg=black
+hi DiffDelete   ctermbg=lightred ctermfg=black
+hi DiffText     ctermbg=cyan ctermfg=black
+
