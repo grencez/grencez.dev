@@ -134,14 +134,14 @@ message GroceryListItem {
   bool variety = 3;
   float budget = 4;
   oneof expected_cost {
-    float each = 5;
-    float total = 6;
+    float expected_cost_each = 5;
+    float expected_cost_total = 6;
   }
   repeated string favorites = 7;
 }
 
 message GroceryList {
-  repeated GrocerListItem items = 1;
+  repeated GroceryListItem items = 1;
 }
 ```
 
@@ -163,18 +163,18 @@ Using the explicit array style for repeated fields, we can specify the grocery l
  (()                                ;
   (name "dip")                      ;      name: "dip"
   (amount 1)                        ;      amount: 1
-  (expected_cost (total 6.50))      ;      expected_cost {total: 6.50}
+  (expected_cost_total 6.50)        ;      expected_cost_total: 6.50
   (budget 20)                       ;      budget: 10
   ((favorites) "hummus" "garlic"))  ;      favorites: ["hummus", "garlic"]
  (()                                ;  }, {
   (name "hot sauce")                ;      name: "hot sauce"
   (amount 3)                        ;      amount: 3
   (variety true)                    ;      variety: true
-  (expected_cost (each 6.50))       ;      expected_cost {each: 6.50}
+  (expected_cost_each 6.50)         ;      expected_cost_each: 6.50
   (budget 20)                       ;      budget: 20
   ((favorites)                      ;      favorites: [
    "yuzu" "kiss" "fire"             ;          "yuzu", "kiss", "fire",
-   "bee" "sunshine")))              ;          "bee", "sunshine",
+   "bee" "sunshine")))              ;          "bee", "sunshine"
                                     ;      ]
 ; vim: ft=lisp lw=nil               ;  }]
 ```
@@ -185,7 +185,7 @@ Contrast that the "repeated" style below.
 (items                          ;  items {
   (name "dip")                  ;    name: "dip"
   (amount 1)                    ;    amount: 1
-  (expected_cost (total 6.50))  ;    expected_cost {total: 6.50}
+  (expected_cost_total 6.50)    ;    expected_cost_total: 6.50
   (budget 10)                   ;    budget: 10
   (favorites "hummus")          ;    favorites: "hummus"
   (favorites "garlic"))         ;    favorites: "garlic"
@@ -194,7 +194,7 @@ Contrast that the "repeated" style below.
   (name "hot sauce")            ;    name: "hot sauce"
   (amount 3)                    ;    amount: 3
   (variety true)                ;    variety: true
-  (expected_cost (each 6.50))   ;    expected_cost {each: 6.50}
+  (expected_cost_each 6.50)     ;    expected_cost_each: 6.50
   (budget 20)                   ;    budget: 20
   (favorites "yuzu")            ;    favorites: "yuzu"
   (favorites "kiss")            ;    favorites: "kiss"
