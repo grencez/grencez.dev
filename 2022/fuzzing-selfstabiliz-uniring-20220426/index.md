@@ -141,7 +141,7 @@ Most other topologies require you to model nondeterministic scheduling choices, 
 During design, we trivially avoided creating machines that would be ready to act immediately after acting.
 Therefore, the number of machines that are ready to act will not increase over time.
 This is why we lose no generality by looking at these "worse case" executions.
-A full proof is from Aly Farahat's [Local Reasoning for Global Convergence of Parameterized Rings](https://doi.org/10.1109/ICDCS.2012.66) paper.
+A full proof can be found in [Local Reasoning for Global Convergence of Parameterized Rings](https://doi.org/10.1109/ICDCS.2012.66) by Aly Farahat and Ali Ebnenasir.
 
 ### How to model executions?
 Let machines act until the system revits some global state.
