@@ -1,0 +1,94 @@
+load("@rules_fuzzing//fuzzing:cc_defs.bzl", "cc_fuzz_test")
+
+# 4-state token ring (non-stabilizing).
+cc_fuzz_test(
+    name = "NonStabilizing_TokenRingFourState_fuzz_test",
+    srcs = [
+        "stabilization_fuzz_test.c",
+        "uniring_protocol.h",
+        "NonStabilizing_TokenRingFourState.c",
+    ],
+    copts = ["-std=c99"],
+    target_compatible_with = ["@platforms//os:linux"],
+    defines = ["FSM_COUNT_MIN=8", "FSM_COUNT_MAX=8"],
+)
+
+cc_binary(
+    name = "NonStabilizing_TokenRingFourState_exhaustive",
+    srcs = [
+        "NonStabilizing_TokenRingFourState.c",
+        "guess_exhaustive.c",
+        "stabilization_fuzz_test.c",
+        "uniring_protocol.h",
+    ],
+    copts = ["-std=c99"],
+    defines = ["FSM_COUNT_MAX=8"],
+)
+
+
+# 5-state token ring (self-stabilizing).
+cc_fuzz_test(
+    name = "TokenRingFiveState_fuzz_test",
+    srcs = [
+        "TokenRingFiveState.c",
+        "stabilization_fuzz_test.c",
+        "uniring_protocol.h",
+    ],
+    copts = ["-std=c99"],
+    target_compatible_with = ["@platforms//os:linux"],
+)
+
+
+# 6-state token ring (a buggy/non-stabilizing version)
+cc_fuzz_test(
+    name = "NonStabilizing_TokenRingSixState_fuzz_test",
+    srcs = [
+        "NonStabilizing_TokenRingSixState.c",
+        "stabilization_fuzz_test.c",
+        "uniring_protocol.h",
+    ],
+    target_compatible_with = ["@platforms//os:linux"],
+    defines = ["FSM_COUNT_MIN=14", "FSM_COUNT_MAX=14"],
+)
+
+cc_binary(
+    name = "NonStabilizing_TokenRingSixState_random",
+    srcs = [
+        "NonStabilizing_TokenRingSixState.c",
+        "guess_random.cc",
+        "stabilization_fuzz_test.c",
+        "uniring_protocol.h",
+    ],
+    defines = ["FSM_COUNT_MAX=14", "GUESS_COUNT=1000000"],
+)
+
+
+# Dijkstra's token ring (non-stabilizing due to lack of states).
+cc_fuzz_test(
+    name = "NonStabilizing_TokenRingDijkstra_fuzz_test",
+    srcs = [
+        "TokenRingDijkstra.c",
+        "stabilization_fuzz_test.c",
+        "uniring_protocol.h",
+    ],
+    defines = [
+        "FSM_STATE_COUNT=6",
+        "FSM_COUNT_MIN=8",
+        "FSM_COUNT_MAX=8",
+    ],
+    target_compatible_with = ["@platforms//os:linux"],
+)
+
+cc_binary(
+    name = "NonStabilizing_TokenRingDijkstra_exhaustive",
+    srcs = [
+        "TokenRingDijkstra.c",
+        "guess_exhaustive.c",
+        "stabilization_fuzz_test.c",
+        "uniring_protocol.h",
+    ],
+    defines = [
+        "FSM_STATE_COUNT=6",
+        "FSM_COUNT_MAX=8",
+    ],
+)

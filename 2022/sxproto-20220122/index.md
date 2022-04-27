@@ -1,12 +1,15 @@
 ---
 canonical_url: https://grencez.dev/2022/sxproto-20220122
 date: 2022-01-22
+last_modified_at: 2022-04-26
 description: A file extension and format for S-expressions representing protobuf messages.
 ---
 
 # Sxproto: An S-expression format for protocol buffer messages
 
 Date: 2022-01-22
+
+Code: [https://github.com/fantasma/rules_sxproto](https://github.com/fantasma/rules_sxproto)
 
 ## Motivation
 
@@ -106,9 +109,9 @@ There's no type ambiguity because the associated protobuf schema defines our act
 (my_integers 3)  ;  my_integers: 3
 
 ; An array of strings.
-(my_greetings 1)  ;  my_greetings: "yo"
-(my_greetings 2)  ;  my_greetings: "howdy"
-(my_greetings 3)  ;  my_greetings: "sup"
+(my_greetings "yo")     ;  my_greetings: "yo"
+(my_greetings "howdy")  ;  my_greetings: "howdy"
+(my_greetings "sup")    ;  my_greetings: "sup"
 
 ; An array of messages.
 (my_messages (x 5))    ;  my_messages: {x: 5}
@@ -130,7 +133,7 @@ syntax = "proto3";
 
 message GroceryListItem {
   string name = 1;
-  int amount = 2;
+  int32 amount = 2;
   bool variety = 3;
   float budget = 4;
   oneof expected_cost {

@@ -1,0 +1,7 @@
+module(
+    name = "dev_grencez",
+    version = "0.0.0",  # No releases ever.
+)
+
+bazel_dep(name = "rules_sxproto", version = "0.0.1")
+bazel_dep(name = "rules_proto", version = "4.0.0")

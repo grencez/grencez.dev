@@ -1,0 +1,17 @@
+#build --copt=-march=native
+
+common:bzlmod --experimental_enable_bzlmod
+common:bzlmod --registry=https://raw.githubusercontent.com/fantasma/fantasma_bazel_registry/trunk
+common:bzlmod --registry=https://raw.githubusercontent.com/bazelbuild/bazel-central-registry/main
+
+# --config=clang
+build:clang --action_env=CC=clang --action_env=CXX=clang++
+
+# --config=libfuzzer
+build:libfuzzer --config=clang
+build:libfuzzer --@rules_fuzzing//fuzzing:cc_engine=@rules_fuzzing//fuzzing/engines:libfuzzer
+build:libfuzzer --@rules_fuzzing//fuzzing:cc_engine_instrumentation=libfuzzer
+
+# --config=asan-libfuzzer
+build:asan-libfuzzer --config=libfuzzer
+build:asan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_sanitizer=asan

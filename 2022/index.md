@@ -8,3 +8,4 @@ last_modified_at: 2022-02-27
 
 * [sxproto-20220122](sxproto-20220122/index.md): An S-expression format for protocol buffer messages
 * [dotfiles-20220222](dotfiles-20220222/index.md): Config files to copy when switching computers
+* [fuzzing-selfstabiliz-uniring-20220426](fuzzing-selfstabiliz-uniring-20220426/index.md): Fuzz testing self-stabilization

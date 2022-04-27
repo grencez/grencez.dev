@@ -10,6 +10,7 @@ description: Brief reports of Linux tools, configurations, and code that worked 
 
 ## Recent / Highlights
 
+* [fuzzing-selfstabiliz-uniring](2022/fuzzing-selfstabiliz-uniring-20220426/index.md): Fuzz testing self-stabilization
 * [sxproto](2022/sxproto-20220122/index.md): An S-expression format for protocol buffer messages
 * [ffmpeg-merge-video](2020/ffmpeg-merge-video-20201122.md): Concatenating videos and adding audio samples using FFmpeg
 * [freshtomato-client-router](2020/freshtomato-client-router-20201025.md): Setting up FreshTomato on a router to act as a wireless adapter
