@@ -10,9 +10,6 @@ Date: 2022-04-26
 
 Code: [https://github.com/grencez/grencez.dev/tree/trunk/2022/fuzzing-selfstabiliz-uniring-20220426](https://github.com/grencez/grencez.dev/tree/trunk/2022/fuzzing-selfstabiliz-uniring-20220426)
 
-* TOC
-{:toc}
-
 ## Abstract
 In this article, I model some unidirectional token ring protocols in C, write a test that detects whether a protocol eventually provides mutual exclusion from a given initial state, and use a fuzzer to choose that initial state.
 This is essentially treating the fuzzer as a model checker.
