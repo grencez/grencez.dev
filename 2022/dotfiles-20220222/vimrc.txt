@@ -1,0 +1,262 @@
+
+set nocompatible "< No vi bugs
+
+if exists("g:vimrcsourced")
+  finish
+endif
+let g:vimrcsourced = 1
+
+let g:python_recommended_style = 0
+
+filetype on
+filetype plugin indent on
+
+if &term =~ ".*rxvt"
+  "colorscheme elisex
+  colorscheme grencez
+elseif &term == "xterm"
+  "colorscheme default
+  colorscheme grencez
+else
+  colorscheme grencez
+  "colorscheme default
+endif
+
+set bs=2 "< Enable backspace while insert
+"set cursorcolumn
+"set cursorline
+set formatoptions+=cro "< Auto-insert characters
+"^ to begin each new line of a comment.^
+"set foldmethod=indent "< Enable code folding
+"set foldmethod=manual "< Enable code folding
+set nofoldenable
+set foldnestmax=1
+set foldminlines=5
+set hls "< Turn off highlight after search
+set incsearch "< Incremental searching
+set lazyredraw "< No redraw when executing macros
+"set nowrap "< No line wrap
+"set wrapscan "< on by default
+set wrap lbr
+set tabstop=2 "< Tab width
+set shiftwidth=2
+set expandtab "< Expand tabs into spaces
+set cindent
+set ruler "< Gotta know where i am in a file
+"set timeoutlen=0 "< Breaks some bindings!
+set ttimeoutlen=0
+set vb t_vb= "< Screen flash instead of beeps
+set virtualedit=all "< Free cursor
+set wildmode=longest,list,full
+set wildmenu
+
+set cinoptions=(0,W4
+set cinkeys+=/
+
+"--- MAPPINGS ---
+"V Toggle spell checking with F5.V
+map <F5> <Esc>:setlocal spell! spelllang=en_us<CR>
+"V Space bar inserts a space.V
+nmap <Space> i <Esc>
+"V Enter key inserts new line below.V
+nmap <Return> o<Esc>
+"V Delete the current line.V
+nmap D m`<Bar>d$``
+nmap t :tabedit<Space>
+map j g<Down>
+map k g<Up>
+
+"V Page up, Page down V
+nmap <silent> <PageUp> :call FullPageUp()<Return>
+nmap <silent> <PageDown> :call FullPageDown()<Return>
+nmap <silent> gk :call HalfPageUp()<Return>
+nmap <silent> gj :call HalfPageDown()<Return>
+nmap <silent> gK :call QuarterPageUp()<Return>
+nmap <silent> gJ :call QuarterPageDown()<Return>
+
+nmap <silent> gl 20l
+
+nmap <silent> H :call JumpToWinTop()<Return>
+nmap <silent> M :call JumpToWinMid()<Return>
+nmap <silent> L :call JumpToWinBottom()<Return>
+
+"V Commenting helpers V
+nmap ,CC I/** <Esc>A **/<Esc>
+nmap ,Cc ^lla/<Esc>$hhi/<Esc>
+nmap ,cC I/* <Esc>A */<Esc>
+nmap ,cc :s/\/\* \(.*\) \*\/$/\1/<Return>==:nohlsearch<Return>
+
+nnoremap <F8> :setl nocin nosi inde=<CR>
+
+"V Syntax highlighting if monitor supports it.V
+if &t_Co > 1
+  syntax enable
+endif
+
+"Indent Fortran DO loops.
+let fortran_do_enddo=1
+let fortran_free_source=1
+"let fortran_fixed_source=0
+
+"PHP stuffs
+let PHP_DEFAULT_INDENTING=1
+let PHP_removeCRwhenUnix=1
+
+let g:slimv_lisp = '/home/grencez/acl2-sources/saved_acl2'
+let g:slimv_impl = 'sbcl'
+let g:lisp_rainbow = 1
+"let g:slimv_debug_client = 1
+let g:slimv_client = 'python ~/.vim/ftplugin/slimv.py -r "mrxvt -T Slimv -e @p @s -l /home/grencez/acl2-sources/saved_acl2 -s"'
+
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+" fix meta-keys which generate <Esc>a .. <Esc>z
+"let c='a'
+"while c <= 'z'
+"  exec "set <M-".c.">=\e".c
+"  exec "imap \e".c." <M-".c.">"
+"  let c = nr2char(1+char2nr(c))
+"endw
+
+" LaTeX
+let g:tex_flavor='latex'
+nmap <silent> ,^ :call JumpToWrappedBeg()<Return>
+nmap <silent> ,$ :call JumpToWrappedEnd()<Return>
+
+" GDB
+"set previewheight=12
+"run macros/gdb_mappings.vim
+"set asm=0
+"set gdbprg=gdb_invocation
+"
+let dir = getcwd()
+while ! filereadable(dir . '/tags') && dir != ''
+    let dir = substitute(dir, '/[^/]*$', '', '')
+endwhile
+
+if filereadable(dir . '/tags')
+    let &tags = dir . '/tags'
+    "exec 'set tags=' . dir . '/tags'
+    "echo 'setting ctags: ' . 'set tags=' . dir . '/tags'
+endif
+
+"augroup filetypedetect
+"    " Promela
+"    au BufNewFile,BufRead *.promela,*.prm     setf promela
+"augroup END
+
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+
+" These were thought to be needed for the below functions, but they are not.
+"let restorecol = "normal " . virtcol(".") . "|"
+"execute restorecol
+
+function! FullPageUp()
+    let offset = winheight(0) -1
+    call JumpToWinMid()
+    execute "normal " . offset . "kzz"
+endfunction
+function! FullPageDown()
+    let offset = winheight(0) -1
+    call JumpToWinMid()
+    execute "normal " . offset . "jzz"
+endfunction
+
+function! HalfPageUp()
+    let offset = (winheight(0)+1) / 2
+    execute "normal " . offset . "kzz"
+endfunction
+function! HalfPageDown()
+    let offset = (winheight(0)+1) / 2
+    execute "normal " . offset . "jzz"
+endfunction
+
+function! QuarterPageUp()
+    let offset = (winheight(0)+1) / 4
+    execute "normal " . offset . "kzz"
+endfunction
+function! QuarterPageDown()
+    let offset = (winheight(0)+1) / 4
+    execute "normal " . offset . "jzz"
+endfunction
+
+function! JumpToWinTop()
+    let offset = winline() - 1
+    execute "normal " . offset . "k"
+endfunction
+function! JumpToWinMid()
+    let offset = ((winheight(0)+1) / 2) - winline()
+    if offset < 0
+        execute "normal " . (- offset) . "k"
+    elseif offset > 0
+        execute "normal " . offset . "j"
+    endif
+endfunction
+function! JumpToWinBottom()
+    let offset = winheight(0) - winline()
+    execute "normal " . offset . "j"
+endfunction
+
+function! JumpToWrappedBeg()
+    let offset = wincol() - 1
+    if offset > 0
+        execute "normal " . offset . "h"
+    endif
+endfunction
+
+function! JumpToWrappedEnd()
+    let offset = winwidth(0) - wincol()
+    if offset > 0
+        execute "normal " . offset . "l"
+    endif
+    execute "normal " . "l"
+    execute "normal " . "b"
+    execute "normal " . "h"
+    execute "normal " . "e"
+endfunction
+
+
+function! s:RunShellCommand(cmdline)
+    echo a:cmdline
+    let expanded_cmdline = a:cmdline
+    for part in split(a:cmdline, ' ')
+        if part[0] =~ '\v[%#<]'
+            let expanded_part = fnameescape(expand(part))
+            let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
+        endif
+    endfor
+    botright new
+    setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+    call setline(1, 'You entered:    ' . a:cmdline)
+    call setline(2, 'Expanded Form:  ' .expanded_cmdline)
+    call setline(3,substitute(getline(2),'.','=','g'))
+    execute '$read !'. expanded_cmdline
+    setlocal nomodifiable
+    1
+endfunction
+
+autocmd BufRead *.txt set tw=0
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" Get project-specific .vimrc mods!
+let dir = getcwd()
+let extra_vimrc = dir . '/.vimrc'
+while ! filereadable(extra_vimrc) && dir != ''
+    let dir = substitute(dir, '/[^/]*$', '', '')
+    let extra_vimrc = dir . '/.vimrc'
+endwhile
+
+if filereadable(extra_vimrc)
+    execute "source " . extra_vimrc
+endif
+

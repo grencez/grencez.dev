@@ -33,6 +33,15 @@ This allows me to run Steam as that user without entering a password:
 sudo -u grencez-for-games -- steam
 ```
 
+Though, you may need to add the new user to xhost permission for that to work:
+
+```shell
+# Show authorized clients.
+xhost
+# Add local grencez-for-games user as authorized client.
+xhost +SI:localuser:grencez-for-games
+```
+
 Then I enabled Proton in Steam Play.
 
 It gives a lot of errors, but I eventually realized that it requires Vulkan, which was just a matter of installing `media-libs/vulkan-loader` and `media-libs/mesa` with the `vulkan` USE flag.
