@@ -10,6 +10,7 @@ description: Brief reports of Linux tools, configurations, and code that worked 
 
 ## Recent / Highlights
 
+* [windows10-install-usb-linux](2022/windows10-install-usb-linux-20220722.md): Creating a Windows 10 install USB in Linux
 * [fuzzing-selfstabiliz-uniring](2022/fuzzing-selfstabiliz-uniring-20220426/index.md): Fuzz testing self-stabilization
 * [sxproto](2022/sxproto-20220122/index.md): An S-expression format for protocol buffer messages
 * [ffmpeg-merge-video](2020/ffmpeg-merge-video-20201122.md): Concatenating videos and adding audio samples using FFmpeg
