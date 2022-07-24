@@ -2,6 +2,7 @@
 canonical_url: https://grencez.dev/2022/windows10-install-usb-linux-20220722
 date: 2022-07-22
 description: Linux commands that create a bootable USB from Windows 10 ISO.
+last_modified_at: 2022-07-23
 ---
 
 # Creating a Windows 10 install USB in Linux
@@ -44,9 +45,9 @@ Finally, mount the ISO and partitions and copy files:
 
 ```shell
 mkdir isomnt bootmnt installmnt
-sudo mount Win10_21H2_EnglishInternational_x64.iso mountiso -o loop
-sudo mount /dev/${usbdev}1 bootmnt
-sudo mount /dev/${usbdev}2 installmnt
+sudo mount "${isofile}" mountiso -o loop
+sudo mount "${usbdev}1" bootmnt
+sudo mount "${usbdev}2" installmnt
 
 # Copy everything but the sources/ folder to BOOT.
 sudo rsync -r --exclude /sources/ isomnt/ bootmnt/
