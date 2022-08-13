@@ -23,7 +23,7 @@ Before actually connecting with each other, you have to give your friend a WebRT
 The most basic signalling server would provide a channel for this exchange, where you might both connect to it with the same key (e.g., meeting code).
 Signalling is also where a server can collect/present persistent data.
 True P2P applications only need a rendezvous point, so I'm somewhat surprised that there isn't a standard for it (at least not for WebRTC).
-To that end, I'll rewrite this demo to use a [swapping rendezvous server](https://github.com/grencez/fantasma/tree/trunk/rendezvous) in a future article.
+To that end, I'll rewrite this demo to use a [swapping rendezvous server](https://github.com/rendezqueue/rendezqueue) in a future article.
 
 TURN is a fallback for when the P2P connections fail.
 Personally, I'd prefer some apps to just fail, but I can imagine that most companies favor reliability.

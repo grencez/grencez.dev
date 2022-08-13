@@ -9,7 +9,7 @@ description: A file extension and format for S-expressions representing protobuf
 
 Date: 2022-01-22
 
-Code: [https://github.com/fantasma/rules_sxproto](https://github.com/fantasma/rules_sxproto)
+Code: [https://github.com/rendezqueue/rules_sxproto](https://github.com/rendezqueue/rules_sxproto)
 
 ## Motivation
 
