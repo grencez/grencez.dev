@@ -1,7 +1,7 @@
 ---
 canonical_url: https://grencez.dev/about
 date: 2021-01-01
-last_modified_at: 2021-01-01
+last_modified_at: 2022-10-16
 ---
 
 # About
@@ -11,3 +11,6 @@ You may remember me from such [research papers](https://dblp.org/pid/133/7778) a
 
 This site contains small projects, proof-of-concepts, and notes about how to do Linux stuff.
 I use Gentoo btw.
+
+Want to chat? Have a suggestion or correction?
+Email me at `thru.site@grencez.dev` or file a [bug on GitHub](https://github.com/grencez/grencez.dev/issues).
