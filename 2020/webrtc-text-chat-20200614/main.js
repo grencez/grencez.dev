@@ -15,7 +15,7 @@ function copy_offer_cb() {
   document.execCommand("copy");
 }
 
-function set_webrtc_offer_input(is_webrtc_initiator, offer_string) {
+function set_webrtc_offer_input(is_webrtc_initiator, offer_string, url_params) {
   let webrtc_offer_input = document.getElementById("webrtc_offer_input");
   webrtc_offer_input.value = offer_string;
 
@@ -26,7 +26,11 @@ function set_webrtc_offer_input(is_webrtc_initiator, offer_string) {
   }
   let url = window.location.href.substring(
     0, window.location.href.length - window.location.search.length);
-  url += "?webrtc_offer=" + encodeURIComponent(offer_string);
+  url += "?";
+  if (url_params.has("stun_url")) {
+    url += "stun_url=" + url_params.get("stun_url") + "&";
+  }
+  url += "webrtc_offer=" + encodeURIComponent(offer_string);
   webrtc_offer_url.href = url;
   webrtc_offer_url.innerHTML = "WebRTC Offer Link";
 }
@@ -44,12 +48,16 @@ function main() {
   const url_params = new URLSearchParams(window.location.search);
   const is_webrtc_initiator = !url_params.has("webrtc_offer");
 
-  var peer_connection = new RTCPeerConnection({
-    'iceServers': [
-      {'urls': 'stun:stun.l.google.com:19302'},
-      {'urls': 'stun:stun2.l.google.com:19302'},
-    ],
-  });
+  var stun_url = "stun.l.google.com:19302";
+  if (url_params.has("stun_url")) {
+    stun_url = decodeURIComponent(url_params.get("stun_url"));
+  }
+
+  var peer_connection_params = {};
+  if (stun_url.length > 0) {
+    peer_connection_params["iceServers"] = [{"urls": "stun:" + stun_url}];
+  }
+  var peer_connection = new RTCPeerConnection(peer_connection_params);
 
   var peer_data_channel = null;
 
@@ -112,7 +120,8 @@ function main() {
   }
 
   function offer_signal_cb(offer) {
-    set_webrtc_offer_input(is_webrtc_initiator, JSON.stringify(offer));
+    set_webrtc_offer_input(
+        is_webrtc_initiator, JSON.stringify(offer), url_params);
   }
 
   function answer_signal_cb(answer) {
