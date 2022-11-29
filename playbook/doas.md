@@ -1,0 +1,1 @@
+../2022/doas-playbook-20221128/index.md
