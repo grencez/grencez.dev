@@ -10,3 +10,5 @@ last_modified_at: 2022-02-27
 * [dotfiles-20220222](dotfiles-20220222/index.md): Config files to copy when switching computers
 * [fuzzing-selfstabiliz-uniring-20220426](fuzzing-selfstabiliz-uniring-20220426/index.md): Fuzz testing self-stabilization
 * [windows10-install-usb-linux-20220722](windows10-install-usb-linux-20220722.md): Creating a Windows 10 install USB in Linux
+* [doas-playbook-20221128](doas-playbook-20221128/index.md): How to run programs as a different user via doas
+* [zfs-volume-shrink-20221129](zfs-volume-shrink-20221129/index.md): How to shrink a ZFS volume in Proxmox

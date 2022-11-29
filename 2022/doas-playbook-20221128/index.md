@@ -5,7 +5,7 @@ last_modified_at: 2022-11-28
 description: A quick way to run commands as a different user.
 ---
 
-# Using the doas command to run as a different user
+# How to run programs as a different user via doas
 
 Date: 2022-11-28
 
