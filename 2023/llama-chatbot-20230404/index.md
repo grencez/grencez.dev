@@ -32,7 +32,7 @@ You need to use flags that tell it to run forever (`-n -1`), have no exit token 
 
 ## Constraining Structure
 Infinite chat has some issues:
-- Bad text patterns develop and worsten. (e.g., User gets a poorly-tokenized nickname like "Userrrrrrrrr".)
+- Bad text patterns develop and worsen. (e.g., User gets a poorly-tokenized nickname like "Userrrrrrrrr".)
   - No easy fix. Must rewrite/regenerate.
 - Dialogue lines get too long.
 - Line that is not dialogue. (e.g., `\end{code}`)
@@ -41,10 +41,12 @@ Infinite chat has some issues:
 A hacky but effective workaround for the last 3 issues is to let the user decide whether they want to speak whenever the Bot writes a punctuation or newline.
 And, in the case of a newline, force it to start with `User: ` or `Bot: ` depending on either user input or alternating pattern (because sometimes it's fun to let the LLM write the user's dialogue).
 
-I think a better general solution is to regenerate the last line if it looks bad (user-driven) or goes on for too long (automatic). https://github.com/rendezqueue/rendezllama will contain the implementation of at least one of these ideas.
+A better general solution is to regenerate the last line if it looks bad (user-driven) or goes on for too long (automatic).
+This idea is tracked by [Issue #604](https://github.com/ggerganov/llama.cpp/issues/604) for llama.cpp and is already implemented in a fork named [koboldcpp](https://github.com/LostRuins/koboldcpp).
+My [rendezllama](https://github.com/rendezqueue/rendezllama) project will eventually do the same via llama.cpp, koboldcpp, or some other library.
 
 [Allen Roush et al. explore](https://paperswithcode.com/paper/most-language-models-can-be-poets-too-an-ai) some other more direct ways of enforcing structure.
-See https://github.com/Hellisotherpeople/Constrained-Text-Generation-Studio for an implementation and the list of constraints.
+See their [Constrained-Text-Generation-Studio](https://github.com/Hellisotherpeople/Constrained-Text-Generation-Studio) project on GitHub for an implementation and the list of constraints.
 I like this idea, and it could definitely complement the ability to regenerate lines, but it's impossible to guard against all bad text patterns.
 
 ## Quality vs Structure
