@@ -1,0 +1,70 @@
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.perl-ext-common: default
+
+URxvt.cursorBlink:		false
+URxvt.cursorColor:		#9a9a9a
+URxvt.cursorColor2:		#000000
+URxvt.scrollBar:		false
+URxvt.scrollbarRight:		true
+URxvt.saveLines:		2048
+
+! Dont scroll to the bottom every time some output is produced.
+URxvt.scrollTtyOutputInhibit:	true
+
+! Scroll to the bottom when a key is pressed.
+URxvt.scrollTtyKeypress:	true
+
+!URxvt.transparent:		False
+!URxvt.transparentScrollbar:	False
+!URxvt.transparentTabbar:	False
+!URxvt.transparentMenubar:	False
+
+! Color / degree to which the root background should be tinted.
+URxvt.borderLess: True
+
+URxvt.background:		#202020
+URxvt.foreground:		#dcdcdc
+
+!          dark  light
+!   black    0    15    white
+!     red    1     9
+!   green    2    10
+!  yellow    3    11
+!    blue    4    12
+! magenta    5    13
+!    cyan    6    14
+!    grey    8     7
+
+URxvt.color0: black
+URxvt.color1: red3
+URxvt.color2: green3
+URxvt.color3: yellow3
+URxvt.color4: blue3
+URxvt.color5: magenta3
+URxvt.color6: cyan3
+URxvt.color7:	#dcdcdc
+URxvt.color8: grey40
+URxvt.color9: red
+URxvt.color10: green
+URxvt.color11: yellow
+URxvt.color12: #729FCF
+URxvt.color13: magenta
+URxvt.color14: cyan
+URxvt.color15: white
+
+! Display bold and underlined text in color, rather than using the terminal
+! attributes. This makes reading man pages a little easier.
+URxvt.colorBD:			#00afaf
+URxvt.colorUL:			#00af00
+
+! Display the X selection as highlighted instead of using reverse video.
+URxvt.highlightColor:		#303060
+
+! Display menu
+URxvt.showMenu:     false
+
+URxvt.font: -misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-1
+URxvt.boldFont: -misc-fixed-bold-r-normal--20-200-75-75-c-100-iso10646-1
+

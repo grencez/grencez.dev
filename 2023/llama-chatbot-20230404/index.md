@@ -1,14 +1,20 @@
 ---
 canonical_url: https://grencez.dev/2023/llama-chatbot-20230404
 date: 2023-04-04
-last_modified_at: 2023-04-04
+last_modified_at: 2023-07-30
 description: Making an infinite chatbot with llama.cpp.
 ---
 
 # Infinite chatbot with llama.cpp
 
+Date: 2023-04-04 (original trials)
+
+Update: 2023-04-30 (keeping the setup section updated)
+
+Code: [rendezllama](https://github.com/rendezqueue/rendezllama) - A project I created to reliably get around the issues discussed in this article.
+
 ## Abstract
-We walk through some techniques of using llama.cpp as a chatbot.
+We walk through some attempts to use llama.cpp as a chatbot.
 
 Jump to the [Setup](#setup) section if you don't have llama.cpp set up already or if you're trying to copy/paste commands.
 
@@ -43,7 +49,7 @@ And, in the case of a newline, force it to start with `User: ` or `Bot: ` depend
 
 A better general solution is to regenerate the last line if it looks bad (user-driven) or goes on for too long (automatic).
 This idea is tracked by [Issue #604](https://github.com/ggerganov/llama.cpp/issues/604) for llama.cpp and is already implemented in a fork named [koboldcpp](https://github.com/LostRuins/koboldcpp).
-My [rendezllama](https://github.com/rendezqueue/rendezllama) project will eventually do the same via llama.cpp, koboldcpp, or some other library.
+My [rendezllama](https://github.com/rendezqueue/rendezllama) project now does the same via llama.cpp's API.
 
 [Allen Roush et al. explore](https://paperswithcode.com/paper/most-language-models-can-be-poets-too-an-ai) some other more direct ways of enforcing structure.
 See their [Constrained-Text-Generation-Studio](https://github.com/Hellisotherpeople/Constrained-Text-Generation-Studio) project on GitHub for an implementation and the list of constraints.
@@ -146,5 +152,5 @@ git pull origin master
 make
 # Convert from checkpoints and quantize. You don't always have to do this.
 pipenv run python convert-pth-to-ggml.py "${models_dir}/${model_subdir}/" 1
-./quantize "${models_dir}/${model_subdir}/ggml-model-f16.bin" "${models_dir}/${model_subdir}/ggml-model-q4_0.bin" 2
+./quantize "${models_dir}/${model_subdir}/ggml-model-f16.bin" "${models_dir}/${model_subdir}/ggml-model-q4_0.bin" q4_0
 ```
