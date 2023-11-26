@@ -42,6 +42,13 @@ xhost
 xhost +SI:localuser:grencez-for-games
 ```
 
+For PulseAudio, you sometimes need to point the game user at your normal user's session.
+
+```shell
+export PULSE_COOKIE=/home/grencez/.pulse/cookie
+export PULSE_SERVER=unix:/run/user/$UID/pulse/native
+```
+
 Then I enabled Proton in Steam Play.
 
 It gives a lot of errors, but I eventually realized that it requires Vulkan, which was just a matter of installing `media-libs/vulkan-loader` and `media-libs/mesa` with the `vulkan` USE flag.

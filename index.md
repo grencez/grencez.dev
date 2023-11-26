@@ -10,6 +10,7 @@ description: Brief reports of Linux tools, configurations, and code that worked 
 
 ## Recent / Highlights
 
+* [podman-dockge](2023/podman-dockge-20231126/index.md): Running Podman and Dockge in an Alpine LXC on Proxmox
 * [windows10-install-usb-linux](2022/windows10-install-usb-linux-20220722.md): Creating a Windows 10 install USB in Linux
 * [fuzzing-selfstabiliz-uniring](2022/fuzzing-selfstabiliz-uniring-20220426/index.md): Fuzz testing self-stabilization
 * [sxproto](2022/sxproto-20220122/index.md): An S-expression format for protocol buffer messages

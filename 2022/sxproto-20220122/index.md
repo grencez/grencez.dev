@@ -1,13 +1,15 @@
 ---
 canonical_url: https://grencez.dev/2022/sxproto-20220122
 date: 2022-01-22
-last_modified_at: 2022-04-26
+last_modified_at: 2023-11-26
 description: A file extension and format for S-expressions representing protobuf messages.
 ---
 
 # Sxproto: An S-expression format for protocol buffer messages
 
 Date: 2022-01-22
+
+Update: 2023-11-26 (remove schema requirement)
 
 Code: [https://github.com/fildesh/rules_sxproto](https://github.com/fildesh/rules_sxproto)
 
@@ -31,8 +33,8 @@ In fact, we will be using it here as a translation target!
 
 **How should these S-expression protobuf files look?**
 Or more urgently, how should we name them?
-Luckily, applying some wordplay to the existing "textproto" and "binaryproto" naming scheme gives us an easy answer:
-"S-expression proto" files should have an `.sxproto` file extension (pronounced "ess ex proto").
+Luckily, applying some wordplay to the existing "textproto" (`.txtpb`) and "binaryproto" (`.binpb`) naming scheme gives us an easy answer:
+"S-expression proto" files should have an `.sxpb` file extension (pronounced "ess ex proto").
 
 **How do comments look?**
 In Lisp, they're semicolons.
@@ -86,7 +88,7 @@ We can make these "funny messages" fill in the last gap of our syntax: S-express
 ; An array of the previous example's message.
 ((my_messages)                        ;  my_messages [
  (() (x 5))                           ;      {x: 5},
- (())                                 ;      {},
+ ()                                   ;      {},
  (()                                  ;      {a: 5  y: 5.5  greeting: "hello"},
   (x 5) (y 5.5) (greeting "hello")))  ;  ]
 ```
@@ -97,30 +99,33 @@ It's a valid criticism, though I don't really qualify as a Lisp user anymore.
 Anyway, if you find this style too obtuse, you can use the other repeated field syntax.
 
 **What about the other repeated field syntax?**
-Unlike JSON, where you have to specify arrays between square brackets (like above),
-the textproto format lets you specify the field as if it were not repeated at all.
-Indeed, you can just specify it more times to add more values to the array.
-Likewise, there's no new sxproto syntax here, but it's worth mentioning that this style is valid.
-There's no type ambiguity because the associated protobuf schema defines our actual field types.
+Like JSON, where you have to specify arrays between square brackets (like above),
+a sxproto file may not always have a schema, so we should keep one array syntax.
+
+This differs from textproto format, which lets you specify the field as if it were not repeated at all.
+For textproto, there's no type ambiguity because the associated protobuf schema defines the actual field types.
 ```lisp
 ; An array of integers.
-(my_integers 1)  ;  my_integers: 1
-(my_integers 2)  ;  my_integers: 2
-(my_integers 3)  ;  my_integers: 3
+((my_integers)
+ 1              ;  my_integers: 1
+ 2              ;  my_integers: 2
+ 3)             ;  my_integers: 3
 
 ; An array of strings.
-(my_greetings "yo")     ;  my_greetings: "yo"
-(my_greetings "howdy")  ;  my_greetings: "howdy"
-(my_greetings "sup")    ;  my_greetings: "sup"
+((my_greetings)
+ "yo"            ;  my_greetings: "yo"
+ "howdy"         ;  my_greetings: "howdy"
+ "sup")          ;  my_greetings: "sup"
 
 ; An array of messages.
-(my_messages (x 5))    ;  my_messages: {x: 5}
-(my_messages)          ;  my_messages: {}
-(my_messages           ;  my_messages: {
-  (x 5)                ;      x: 5
-  (y 5.5)              ;      y: 5.5
-  (greeting "hello"))  ;      greeting: "hello"
-                       ;  }
+((my_messages)
+ (() (x 5))           ;  my_messages: {x: 5}
+ ()                   ;  my_messages: {}
+ (()                  ;  my_messages: {
+  (x 5)               ;      x: 5
+  (y 5.5)             ;      y: 5.5
+  (greeting "hello")  ;      greeting: "hello"
+ ))                   ;  }
 ```
 
 ## Example
@@ -183,6 +188,7 @@ Using the explicit array style for repeated fields, we can specify the grocery l
 ```
 
 Contrast that the "repeated" style below.
+Note that the left side shows a "repeated" sxproto style that isn't actually valid.
 
 ```lisp
 (items                          ;  items {

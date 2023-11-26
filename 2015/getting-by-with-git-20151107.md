@@ -2,14 +2,14 @@
 canonical_url: https://grencez.dev/2015/getting-by-with-git-20151107
 date: 2015-11-07
 description: How to use Git for version control in the most basic way possible.
-last_modified_at: 2020-11-28
+last_modified_at: 2023-11-26
 ---
 
 # Getting by with Git
 
 Date: 2015-11-07
 
-Update: 2020-11-28
+Update: 2023-11-26
 
 This tutorial introduces just enough Git commands to make a project.
 Be aware that it uses `trunk` as the main branch instead of `master`.
@@ -27,7 +27,7 @@ Create a file `~/.gitconfig` (by typing `git config --global -e` in a terminal) 
 ```
 [user]
   name = Alex Klinkhamer
-  email = grencez@youknowthedomain.com
+  email = git@grencez.dev
 [push]
   default = matching
 ```
@@ -199,18 +199,17 @@ git log --follow file-that-has-moved.c
 ### Working with Others
 
 The above instructions are fine for working by yourself, but what about when others are making changes concurrently?
-
-If `git push` complains about your copy not being up to date, you'll need to do a `git pull`.
-However, there could be conflicts!
-(**WARNING**: I don't have much experience here, so perhaps look elsewhere for good advice.)
-
-If you have uncommitted changes and wish to pull new changes from a teammate, first stash your changes, then have them automatically merged.
-(Merges don't always go cleanly though, so copy your changes elsewhere just in case.)
+In short, make sure trunk has a linear history by working on branches and only squash merging to it.
 
 ```shell
-git stash save
-git pull
-git stash pop
+git pull upstream trunk
+git checkout stage
+git merge trunk
+# Note your commit message and redo it.
+git reset --soft trunk
+git commit -a -S
+# We rewrote history. Time to force push.
+git push -f origin stage
 ```
 
 ## A Note on Commit Messages {#commit-messages}

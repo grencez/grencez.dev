@@ -124,8 +124,7 @@ git clone https://github.com/ggerganov/llama.cpp $(basename "${llama_cpp_dir}")
 cd llama.cpp
 make
 # Prepare pipenv for later.
-pipenv install numpy==1.24.2
-pipenv install sentencepiece
+pipenv install -r requirements.txt
 ```
 
 ### Download LLaMA checkpoints
@@ -151,6 +150,6 @@ git checkout master
 git pull origin master
 make
 # Convert from checkpoints and quantize. You don't always have to do this.
-pipenv run python convert-pth-to-ggml.py "${models_dir}/${model_subdir}/" 1
-./quantize "${models_dir}/${model_subdir}/ggml-model-f16.bin" "${models_dir}/${model_subdir}/ggml-model-q4_0.bin" q4_0
+pipenv run python convert.py "${models_dir}/${model_subdir}/"
+./quantize "${models_dir}/${model_subdir}/ggml-model-f16.gguf" "${models_dir}/${model_subdir}/ggml-model-q4_0.gguf" q4_0
 ```
