@@ -14,10 +14,9 @@ I just want to run containers on Proxmox in a maintainable way.
 
 How should a solution look?
 - Must not modify the base Proxmox system.
-  - Run in an LXC.
-- The LXC should be simple and resistant to how bad I am at security.
-  - Must be unprivileged.
-  - Run in Alpine Linux.
+  - Run in VM or unprivileged LXC.
+- Should be lightweight because my system is often tight on RAM.
+  - Run in Alpine Linux LXC.
 - I want to try something other than Docker managed with Portainer.
   - [Podman](https://podman.io) managed with [Dockge](https://dockge.kuma.pet)!
 
@@ -36,6 +35,10 @@ It became less obnoxious after 6 months, but it's clear that the project cannot 
 
 **Why not Kubernetes?**
 I'd like to, but Minikube and K3s complain about Cgroups.
+
+**Why not in a VM?**
+If RAM wasn't a concern, I would have used a virtual machine like the [Proxmox admin guide recommends](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#chapter_pct) for application containers.
+Though I must admit that LXCs and ZFS filesystems are more accessible than VMs and ZFS volumes.
 
 ## Install
 Before continuing, I should note a few non-standard decisions with my setup:
