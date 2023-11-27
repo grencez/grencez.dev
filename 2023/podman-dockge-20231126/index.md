@@ -28,7 +28,7 @@ It's a very new project, so I don't know what else to expect, but I also don't m
 
 **Why not Yacht?**
 Yacht did seem to work with Docker, but its UI moves around too much for me.
-Its disappearing menus and scrollbars and make me lose focus.
+Its disappearing menus and scrollbars make me lose focus.
 
 **Why not Portainer?**
 Portainer introduced a [distracting advertisement](https://github.com/portainer/portainer/issues/8452) for its Business Edition earlier this year.
@@ -75,7 +75,6 @@ It differs from the [default compose.yaml](https://raw.githubusercontent.com/lou
 
 ```shell
 mkdir -p /opt/compose/dockge
-cd /opt/compose/dockge
 
 cat >/opt/compose/dockge/compose.yaml <<HERE
 version: "3"
@@ -98,6 +97,7 @@ services:
       - DOCKGE_STACKS_DIR=/opt/compose
 HERE
 
+cd /opt/compose/dockge
 podman-compose up -d
 ```
 

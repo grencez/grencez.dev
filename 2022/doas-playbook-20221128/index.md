@@ -20,7 +20,9 @@ export command="echo hello world"
 ```shell
 sudo -E su
 useradd -g $(id -g -n "${main_user}") --shell /bin/false "${delegate_user}"
-printf "permit nopass %s as %s\n" "${main_user}" "${delegate_user}" >>"/etc/doas.conf"
+printf "permit nopass %s as %s\n" "${main_user}" "${delegate_user}" >"/etc/doas.d/${delegate_user}.conf"
+# If the above command failed, append to /etc/doas.conf instead:
+#   printf "permit nopass %s as %s\n" "${main_user}" "${delegate_user}" >>"/etc/doas.conf"
 exit
 ```
 

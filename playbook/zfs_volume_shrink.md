@@ -1,1 +1,0 @@
-../2022/zfs-volume-shrink-20221129/index.md
