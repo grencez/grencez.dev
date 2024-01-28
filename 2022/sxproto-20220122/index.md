@@ -1,7 +1,7 @@
 ---
 canonical_url: https://grencez.dev/2022/sxproto-20220122
 date: 2022-01-22
-last_modified_at: 2023-11-26
+last_modified_at: 2024-01-28
 description: A file extension and format for S-expressions representing protobuf messages.
 ---
 
@@ -88,7 +88,7 @@ We can make these "funny messages" fill in the last gap of our syntax: S-express
 ; An array of the previous example's message.
 ((my_messages)                        ;  my_messages [
  (() (x 5))                           ;      {x: 5},
- ()                                   ;      {},
+ (())                                 ;      {},
  (()                                  ;      {a: 5  y: 5.5  greeting: "hello"},
   (x 5) (y 5.5) (greeting "hello")))  ;  ]
 ```
@@ -120,7 +120,7 @@ For textproto, there's no type ambiguity because the associated protobuf schema 
 ; An array of messages.
 ((my_messages)
  (() (x 5))           ;  my_messages: {x: 5}
- ()                   ;  my_messages: {}
+ (())                 ;  my_messages: {}
  (()                  ;  my_messages: {
   (x 5)               ;      x: 5
   (y 5.5)             ;      y: 5.5

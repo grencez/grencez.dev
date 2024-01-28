@@ -1,7 +1,7 @@
 ---
 canonical_url: https://grencez.dev/2023/llama-chatbot-20230404
 date: 2023-04-04
-last_modified_at: 2023-07-30
+last_modified_at: 2024-01-28
 description: Making an infinite chatbot with llama.cpp.
 ---
 
@@ -9,9 +9,9 @@ description: Making an infinite chatbot with llama.cpp.
 
 Date: 2023-04-04 (original trials)
 
-Update: 2023-04-30 (keeping the setup section updated)
+Update: 2024-01-28 (keeping the setup section updated)
 
-Code: [rendezllama](https://github.com/rendezqueue/rendezllama) - A project I created to reliably get around the issues discussed in this article.
+Code: [rendezllama](https://github.com/rendezqueue/rendezllama) - A project I created to reliably get around some issues discussed in this article.
 
 ## Abstract
 We walk through some attempts to use llama.cpp as a chatbot.
@@ -38,7 +38,7 @@ You need to use flags that tell it to run forever (`-n -1`), have no exit token 
 
 ## Constraining Structure
 Infinite chat has some issues:
-- Bad text patterns develop and worsen. (e.g., User gets a poorly-tokenized nickname like "Userrrrrrrrr".)
+- Bad text patterns develop and worsen. (e.g., quirky speech patterns like `W-what?` can get amplified like `W-w-w-what?` and ultimately degrade into infinite repetition)
   - No easy fix. Must rewrite/regenerate.
 - Dialogue lines get too long.
 - Line that is not dialogue. (e.g., `\end{code}`)
@@ -124,7 +124,7 @@ git clone https://github.com/ggerganov/llama.cpp $(basename "${llama_cpp_dir}")
 cd llama.cpp
 make
 # Prepare pipenv for later.
-pipenv install -r requirements.txt
+pipenv install -r requirements/requirements-convert.txt
 ```
 
 ### Download LLaMA checkpoints
@@ -149,7 +149,8 @@ git checkout master
 # Update and build.
 git pull origin master
 make
+pipenv install -r requirements/requirements-convert.txt
 # Convert from checkpoints and quantize. You don't always have to do this.
-pipenv run python convert.py "${models_dir}/${model_subdir}/"
-./quantize "${models_dir}/${model_subdir}/ggml-model-f16.gguf" "${models_dir}/${model_subdir}/ggml-model-q4_0.gguf" q4_0
+pipenv run python convert.py "${models_dir}/${model_subdir}/" --outtype f16
+./quantize "${models_dir}/${model_subdir}/ggml-model-f16.gguf" "${models_dir}/${model_subdir}/ggml-model.Q5_K_M.gguf" q5_k_m
 ```
