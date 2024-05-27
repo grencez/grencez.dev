@@ -1,8 +1,11 @@
-#build --copt=-march=native
+# Bzlmod for dependencies.
+common --experimental_enable_bzlmod
+common --registry=https://raw.githubusercontent.com/rendezqueue/rendezqueue_bazel_registry/trunk
+common --registry=https://raw.githubusercontent.com/bazelbuild/bazel-central-registry/main
 
-common:bzlmod --experimental_enable_bzlmod
-common:bzlmod --registry=https://raw.githubusercontent.com/fildesh/fildesh_bazel_registry/trunk
-common:bzlmod --registry=https://raw.githubusercontent.com/bazelbuild/bazel-central-registry/main
+# Development.
+#build:linux_dev_platform --cxxopt='-std=c++17'
+build:linux_dev_platform --copt=-march=native
 
 # --config=clang
 build:clang --action_env=CC=clang --action_env=CXX=clang++

@@ -7,7 +7,7 @@ middle=$(echo "$n / 2 + 1" | bc)
 target="$2"
 
 for i in $(seq 1 $n) ; do
-  bazel run --config=libfuzzer ":${target}_fuzz_test_run" -- -clean -- 2>&1 |
+  bazel run --config=asan-libfuzzer ":${target}_fuzz_test_run" -- -clean -- 2>&1 |
   tee /dev/stderr |
   grep "^#" |
   tail -n 1

@@ -262,15 +262,15 @@ int main() {
 ```
 
 ### Methodology
-A `median_trials.sh` script runs fuzz tests several times and extracts the median number of guesses reported by libFuzzer.
+A `median_guesses.sh` script runs fuzz tests several times and extracts the median number of guesses reported by libFuzzer.
 ```shell
 # Run 101 times and get median number of guesses.
-./median_trials.sh 101 NonStabilizing_TokenRingFourState
+./median_guesses.sh 101 NonStabilizing_TokenRingFourState
 ```
 
 Notice how there's no parameter for the number of machines in the ring?
 That's because the range of ring sizes is defined at compile-time in `BUILD.bazel` with lines lke `defines = ["FSM_COUNT_MIN=8", "FSM_COUNT_MAX=8"]`.
-This adds toill to rerunning trials , so an [alternative](#compiling_in_the_range) approach may have been better.
+This adds toill to rerunning trials, so an [alternative](#compiling_in_the_range) approach may have been better.
 
 ## Results
 Compared to random guessing, how well does libFuzzer detect non-stabilizing token rings?
@@ -344,10 +344,10 @@ I didn't explore this possibility because it still makes assumptions about the n
 Unlike on unidirectional rings, livelocks on general topologies may require the number of ready machines to fluctuate.
 
 ### Why not use libFuzzer parameters to control the number of FSMs? {#compiling_in_the_range}
-I somewhat regret the decision to define the range of ring sizes at compile time.
-However, it does feel like compile-time constants should give libFuzzer a more accurate view of how it should focus its efforts.
+I chose to define the range of ring sizes at compile time for the sake of simplicity.
+In theory, this should also give libFuzzer a more accurate view of how it should focus its efforts.
 
-In retrospect, it would be easier to just run fuzz tests with `-max_len=$N` to model a ring of up to `$N` machines.
+Alternatively, `-max_len=$N` could be used to model rings of up to `$N` machines.
 Passing in `-len_control=0` would further ensure that smaller rings would not be tested as much as larger ones.
 
 ### Why not use model checking?

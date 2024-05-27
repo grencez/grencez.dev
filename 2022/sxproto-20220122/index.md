@@ -11,7 +11,7 @@ Date: 2022-01-22
 
 Update: 2023-11-26 (remove schema requirement)
 
-Code: [https://github.com/fildesh/rules_sxproto](https://github.com/fildesh/rules_sxproto)
+Code: [https://github.com/rendezqueue/rules_sxproto](https://github.com/rendezqueue/rules_sxproto)
 
 ## Motivation
 

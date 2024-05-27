@@ -1,4 +1,5 @@
 
 /bazel-*
+/MODULE.bazel.lock
 
 /2021/delicate-bits-of-primes-20210407
