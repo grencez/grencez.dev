@@ -120,25 +120,6 @@ apk add radvd
 cat >/etc/radvd.conf <<"HEREDOC"
 interface eth1 {
   AdvSendAdvert on;
-  AdvManagedFlag on;
-  prefix ::/64 {
-    AdvOnLink on;
-    AdvAutonomous on;
-  };
-};
-HEREDOC
-rc-update add radvd default
-rc-service radvd start
-```
-
-### DHCP Server
-Configure `radvd` to advertise that `route-3-host` can act as a router for SLAAC clients on `eth1`:
-```shell
-apk add radvd
-cat >/etc/radvd.conf <<"HEREDOC"
-interface eth1 {
-  AdvSendAdvert on;
-  AdvManagedFlag on;
   prefix ::/64 {
     AdvOnLink on;
     AdvAutonomous on;

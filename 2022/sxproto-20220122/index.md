@@ -5,7 +5,7 @@ last_modified_at: 2024-07-07
 description: A file extension and format for S-expressions representing protobuf messages.
 ---
 
-# Sxproto: An S-expression format for protocol buffer messages
+# Sxproto data: An S-expression format for protocol buffer messages
 
 Date: 2022-01-22
 
