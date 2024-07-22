@@ -1,7 +1,7 @@
 ---
 canonical_url: https://grencez.dev/2023/llama-chatbot-20230404
 date: 2023-04-04
-last_modified_at: 2024-01-28
+last_modified_at: 2024-07-22
 description: Making an infinite chatbot with llama.cpp.
 ---
 
@@ -9,7 +9,7 @@ description: Making an infinite chatbot with llama.cpp.
 
 Date: 2023-04-04 (original trials)
 
-Update: 2024-01-28 (keeping the setup section updated)
+Update: 2024-07-22 (keeping the setup section updated)
 
 Code: [rendezllama](https://github.com/rendezqueue/rendezllama) - A project I created to reliably get around some issues discussed in this article.
 
@@ -120,11 +120,11 @@ model_subdir=13B
 ```shell
 mkdir -p $(dirname "${llama_cpp_dir}")
 cd $(dirname "${llama_cpp_dir}")
-git clone https://github.com/ggerganov/llama.cpp $(basename "${llama_cpp_dir}")
+git clone -b master https://github.com/ggerganov/llama.cpp $(basename "${llama_cpp_dir}")
 cd llama.cpp
 make
 # Prepare pipenv for later.
-pipenv install -r requirements/requirements-convert.txt
+pipenv install -r requirements/requirements-convert_hf_to_gguf.txt
 ```
 
 ### Download LLaMA checkpoints
@@ -149,8 +149,9 @@ git checkout master
 # Update and build.
 git pull origin master
 make
-pipenv install -r requirements/requirements-convert.txt
+pipenv install -r requirements/requirements-convert_hf_to_gguf.txt
+
 # Convert from checkpoints and quantize. You don't always have to do this.
-pipenv run python convert.py "${models_dir}/${model_subdir}/" --outtype f16
-./quantize "${models_dir}/${model_subdir}/ggml-model-f16.gguf" "${models_dir}/${model_subdir}/ggml-model.Q5_K_M.gguf" q5_k_m
+pipenv run python convert_hf_to_gguf.py "${models_dir}/${model_subdir}/"
+./llama-quantize "${models_dir}/${model_subdir}"/.*F16.gguf "${models_dir}/${model_subdir}/ggml-model.Q5_K_M.gguf" q5_k_m
 ```
