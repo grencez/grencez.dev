@@ -1,13 +1,15 @@
 ---
 canonical_url: https://grencez.dev/2023/podman-dockge-20231126
 date: 2023-11-26
-last_modified_at: 2023-11-26
+last_modified_at: 2025-05-10
 description: How to set up Podman on Proxmox and manage it with Dockge.
 ---
 
 # How to run Podman and Dockge in an Alpine LXC on Proxmox
 
 Date: 2023-11-26
+
+Update: 2025-05-10 (`podman-compose` cgroups v2 enforcement workaround)
 
 ## Motivation
 I just want to run containers on Proxmox in a maintainable way.
@@ -80,7 +82,8 @@ It differs from the [default compose.yaml](https://raw.githubusercontent.com/lou
 mkdir -p /opt/compose/dockge
 
 cat >/opt/compose/dockge/compose.yaml <<HERE
-version: "3"
+x-podman:
+  in_pod: false
 volumes:
   dockge_data:
     driver: local
@@ -104,6 +107,9 @@ cd /opt/compose/dockge
 podman-compose up -d
 ```
 
+The `in_pod: false` part is to work around newer `podman-compose` versions enforcing cgroups v2.
+Kudos to [wrobelda on Proxmox forums for this tip](https://forum.proxmox.com/threads/podman-inside-unprivileged-alpine-container-fails-to-start.165372/post-768511).
+
 ## Test
 That's it. Dockge should now be accessible on port 5001.
 If you want a simple test, use the following YAML file to set up a stack.
@@ -111,7 +117,6 @@ It just prints a version number and exits.
 ```yaml
 # This file is /opt/compose/fildesh_oneoff/compose.yaml
 # if you name the stack "fildesh_oneoff".
-version: "3"
 services:
   fildesh:
     restart: no
