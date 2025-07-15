@@ -8,6 +8,7 @@ description: Brief reports of Linux tools, configurations, and code that worked 
 [Who am I?](about.md)
 
 ## Recent / Highlights
+* [postmarketos-f2fs-ufs](2025/postmarketos-f2fs-ufs-20250714/index.md): Installing PostmarketOS on a Minisforum S100
 * [ipv6-forwarding-lxc](2024/ipv6-forwarding-lxc-20240624/index.md): Forwarding IPv6 traffic through an Alpine LXC on Proxmox
 * [podman-dockge](2023/podman-dockge-20231126/index.md): Running Podman and Dockge in an Alpine LXC on Proxmox
 * [windows10-install-usb-linux](2022/windows10-install-usb-linux-20220722.md): Creating a Windows 10 install USB in Linux
@@ -31,7 +32,7 @@ description: Brief reports of Linux tools, configurations, and code that worked 
 * [circlife](2019/circlife-20190310/index.md): Monotonous Life on a Circle Planet
 
 ## All Years
-* [2020](2020/index.md), [2022](2022/index.md), [2023](2023/index.md), [2024](2024/index.md)
+* [2020](2020/index.md), [2022](2022/index.md), [2023](2023/index.md), [2024](2024/index.md), [2025](2025/index.md)
 * [2014](2014/index.md), [2015](2015/index.md), [2016](2016/index.md), [2018](2018/index.md), [2019](2019/index.md)
 * [2008](2008/index.md)
 
