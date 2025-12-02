@@ -1,7 +1,7 @@
 ---
 canonical_url: https://grencez.dev/2025
 date: 2025-07-14
-last_modified_at: 2025-12-02
+last_modified_at: 2025-12-03
 ---
 
 # 2025
@@ -10,3 +10,4 @@ last_modified_at: 2025-12-02
 * [jj-vcs-git-quickref](jj-vcs-git-quickref-20251006/index.md): Jujutsu with Git version control
 * [sxpb-anonymous-discriminated-string](sxpb-anonymous-discriminated-string-20251201/index.md): Listing bare multi-word strings in SxPB
 * [google-keep-indent-llm-quickref](google-keep-indent-llm-quickref-20251202/index.md): Protocol for preserving indentation in Google Keep
+* [running-ollama-on-alpine-linux](running-ollama-on-alpine-linux-20251203/index.md): Running Ollama on Alpine Linux

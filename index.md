@@ -8,6 +8,7 @@ description: Brief reports of Linux tools, configurations, and code that worked 
 [Who am I?](about.md)
 
 ## Recent / Highlights
+* [running-ollama-on-alpine-linux](2025/running-ollama-on-alpine-linux-20251203/index.md): Running Ollama on Alpine Linux
 * [google-keep-indent-llm-quickref](2025/google-keep-indent-llm-quickref-20251202/index.md): Protocol for preserving indentation in Google Keep
 * [jj-vcs-git-quickref](2025/jj-vcs-git-quickref-20251006/index.md): Jujutsu with Git version control
 * [postmarketos-f2fs-ufs](2025/postmarketos-f2fs-ufs-20250714/index.md): Installing PostmarketOS on a Minisforum S100
