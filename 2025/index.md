@@ -10,3 +10,4 @@ last_modified_at: 2025-12-03
 * [jj-vcs-git-quickref](jj-vcs-git-quickref-20251006/index.md): Jujutsu with Git version control
 * [sxpb-anonymous-discriminated-string](sxpb-anonymous-discriminated-string-20251201/index.md): Listing bare multi-word strings in SxPB
 * [google-keep-indent-llm-quickref](google-keep-indent-llm-quickref-20251202/index.md): Quickref: Saving code snippets to Google Keep from the Gemini app
+* [running-ollama-on-alpine-linux](running-ollama-on-alpine-linux-20251203/index.md): Running Ollama on Alpine Linux
