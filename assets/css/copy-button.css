@@ -1,0 +1,44 @@
+.highlight {
+  position: relative;
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: #57606a;
+  transition: background-color 0.2s, color 0.2s;
+  user-select: none;
+}
+
+.copy-code-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #24292f;
+}
+
+.copy-code-button:active {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  .copy-code-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #c9d1d9;
+  }
+
+  .copy-code-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+
+  .copy-code-button:active {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}

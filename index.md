@@ -25,7 +25,8 @@ description: Brief reports of Linux tools, configurations, and code that worked 
 * [webgl-texture-ping-pong](2020/webgl-texture-ping-pong-20200607/index.md): WebGL ping-pong shading
 
 ## S-expression Format for Protobuf Data
-* [sxpb-string-grammar](2024/sxpb-string-grammar-20240717/index.md): Parsing strings from Sxpb files
+* [sxpb-anonymous-discriminated-string](2025/sxpb-anonymous-discriminated-string-20251201/index.md): Listing bare multi-word strings in SxPB
+* [sxpb-string-grammar](2024/sxpb-string-grammar-20240717/index.md): Parsing strings from SxPB files
 * [sxproto](2022/sxproto-20220122/index.md): Sxproto data: An S-expression format for protocol buffer messages
 
 ## Theoretical Computer Science

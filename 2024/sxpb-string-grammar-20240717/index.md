@@ -5,23 +5,23 @@ last_modified_at: 2024-07-17
 description: How to unambiguously parse string literals in .sxpb format.
 ---
 
-# Parsing strings from Sxpb files
+# Parsing strings from SxPB files
 Date: 2024-07-17
 
 ## Abstract
-In the initial design of [Sxpb, an S-expression format for protobuf data](../../2022/sxproto-20220122/index.md), we only considered the basic double-quoted string.
-Since then, Sxpb has been extended to support multiline and bare strings.
+In the initial design of [SxPB, an S-expression format for protobuf data](../../2022/sxproto-20220122/index.md), we only considered the basic double-quoted string.
+Since then, SxPB has been extended to support multiline and bare strings.
 Multiline strings make it easy to embed file content, which is particularly useful in Ansible playbooks.
 Bare strings only have blank space between the field name and first word, which yields an efficient tokenization when fed to Large Language Models.
 The absence of double quotes makes bare strings easier to type, but this design might include confusing edge cases without proper care.
 
-To alleviate confusion or ambiguity, we define a regular grammar for Sxpb strings.
+To alleviate confusion or ambiguity, we define a regular grammar for SxPB strings.
 In doing so, we also show that bare strings remain simple enough to be recognized by their first one or two bytes.
 
 ## Motivation
-Sxpb aims to be convenient while remaining simple enough to have predictable limits on its flexibility.
+SxPB aims to be convenient while remaining simple enough to have predictable limits on its flexibility.
 To this end, literal values and the fields that hold them should be trivial to parse:
-```lisp
+```sxpb
 ; Booleans are named literals, which begin with a plus.
 (my_bool +false) (my_other_bool +true)
 ; Integers can also begin with a minus or digit.
@@ -37,7 +37,7 @@ To this end, literal values and the fields that hold them should be trivial to p
 ("my_quoted_field" "a b c")
 ```
 
-As for structure, Sxpb adheres to three basic rules:
+As for structure, SxPB adheres to three basic rules:
 - Field names and literal values are delimited by blank space, which includes semicolon-prefixed line comments.
 - Structural elements are wrapped by parentheses, which do not require blank space for separation.
 - Strings can be surrounded by double quotes and can then contain backslash-escaped double quotes.
@@ -46,8 +46,8 @@ Aside from some edge-case strings, the rules for literals and structure given ab
 Let's tackle those strings, first by exploring how we want to write them conveniently in an example, and finally by defining an grammar to parse them unambiguously.
 
 ## Example
-Consider the following Sxpb-formatted Ansible playbook that updates a host's `/etc/motd`:
-```lisp
+Consider the following SxPB-formatted Ansible playbook that updates a host's `/etc/motd`:
+```sxpb
 ; file: motd_ansible_playbook.sxpb
 (())
 (()
@@ -77,7 +77,7 @@ A few things to note:
 - Task name includes a plain number `10`, which is interpreted as a string.
   - This is expected because we already know the field is a string at this point.
 - File content begins with several unquoted strings containing a single quote, comma, and period.
-  - This is fine because those characters have no special meaning in Sxpb.
+  - This is fine because those characters have no special meaning in SxPB.
 - File content includes double quotes within a multiline string.
   - This matches Python's behavior.
 

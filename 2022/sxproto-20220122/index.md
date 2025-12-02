@@ -35,21 +35,21 @@ In fact, we will be using it here as a translation target!
 They should have the `.sxpb` extension, which follows the pattern of the text (`.txtpb`) and binary (`.binpb`) protobuf formats.
 
 **How is sxpb pronounced?**
-We can call it Sxproto data (pronounced "ess ex proto data") or just Sxpb (pronounced "ess ex pee bee").
+We can call it Sxproto data (pronounced "ess ex proto data") or just SxPB (pronounced "ess ex pee bee").
 Avoid just saying "Sxproto" because "proto" typically refers to the schema in a `.proto` file.
 
 **How do comments look?**
 In Lisp, they're semicolons.
 We don't want to bother writing custom syntax rules, so a semicolon sounds great.
 In fact, we can put the following comment at the end of a sxproto file to tell Vim that it should have Lisp indentation.
-```lisp
+```sxpb
 ; vim: ft=lisp lw=nil
 ```
 
 **What about scalar fields?**
 These are fields that contain a number or a string.
 Fields all have names, so the name should begin the S-expression and the value comes after it.
-```lisp
+```sxpb
 ; An integer.
 (x 5)  ;  x: 5
 ; A float.
@@ -64,7 +64,7 @@ Fields all have names, so the name should begin the S-expression and the value c
 This is basically the same.
 The field name comes first in the S-expression, and everything after it represents the fields of the message.
 Since each field of that message is an S-expression itself, there's no ambiguity.
-```lisp
+```sxpb
 ; A message holding a single integer.
 (m (x 5))  ;  m {x: 5}
 
@@ -79,7 +79,7 @@ Since each field of that message is an S-expression itself, there's no ambiguity
 Rather than holding just one value of a certain type, a repeated field holds an array of such values.
 Conceptually, this is like a message with unnamed fields and where order matters, so it should use a similar but obviously different syntax.
 We can write arrays just like messages but with `(())` as the first field, hinting to our eyes or a parser that what follows are the array's elements.
-```lisp
+```sxpb
 ; An array of integers.
 (my_integers (()) 1 2 3)  ;  my_integers: [1, 2, 3]
 
@@ -103,7 +103,7 @@ a sxproto file may not always have a schema, so we should keep one array syntax.
 
 This differs from txtpb format, which lets you specify the field as if it were not repeated at all.
 For txtpb, there's no type ambiguity because the associated protobuf schema defines the actual field types.
-```lisp
+```sxpb
 ; An array of integers.
 (my_integers (())
  1                 ;  my_integers: 1
@@ -165,7 +165,7 @@ I only need 3 sauces and should limit the cost to 20 USD.
 
 Using the explicit array style for repeated fields, we can specify the grocery list as:
 
-```lisp
+```sxpb
 (items (())                           ;  items: [{
  (()
   (name "dip")                        ;    name: "dip"

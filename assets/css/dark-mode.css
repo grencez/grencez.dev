@@ -75,4 +75,63 @@
   }
 
   /* Footer specific if needed, but the utility classes should cover it.*/
+
+  /* Syntax Highlighting */
+  .markdown-body .highlight .k,
+  .markdown-body .highlight .kd,
+  .markdown-body .highlight .kn,
+  .markdown-body .highlight .kp,
+  .markdown-body .highlight .kr,
+  .markdown-body .highlight .kt,
+  .markdown-body .highlight .kv {
+    color: #ff7b72;
+  }
+  .markdown-body .highlight .s,
+  .markdown-body .highlight .sb,
+  .markdown-body .highlight .sc,
+  .markdown-body .highlight .sd,
+  .markdown-body .highlight .s2,
+  .markdown-body .highlight .se,
+  .markdown-body .highlight .sh,
+  .markdown-body .highlight .si,
+  .markdown-body .highlight .sx,
+  .markdown-body .highlight .s1 {
+    color: #a5d6ff;
+  }
+  .markdown-body .highlight .c,
+  .markdown-body .highlight .ch,
+  .markdown-body .highlight .cm,
+  .markdown-body .highlight .cp,
+  .markdown-body .highlight .cpf,
+  .markdown-body .highlight .c1,
+  .markdown-body .highlight .cs {
+    color: #8b949e;
+  }
+  .markdown-body .highlight .n,
+  .markdown-body .highlight .na,
+  .markdown-body .highlight .nb,
+  .markdown-body .highlight .bp,
+  .markdown-body .highlight .nc,
+  .markdown-body .highlight .no,
+  .markdown-body .highlight .nd,
+  .markdown-body .highlight .ni,
+  .markdown-body .highlight .ne,
+  .markdown-body .highlight .nf,
+  .markdown-body .highlight .fm,
+  .markdown-body .highlight .nl,
+  .markdown-body .highlight .nn,
+  .markdown-body .highlight .py,
+  .markdown-body .highlight .nt,
+  .markdown-body .highlight .nv,
+  .markdown-body .highlight .vc,
+  .markdown-body .highlight .vg,
+  .markdown-body .highlight .vi,
+  .markdown-body .highlight .vm {
+     color: #c9d1d9;
+  }
+  .markdown-body .highlight .nc,
+  .markdown-body .highlight .nf,
+  .markdown-body .highlight .nn {
+      color: #d2a8ff;
+  }
 }
