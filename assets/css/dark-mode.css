@@ -126,8 +126,21 @@
   .markdown-body .highlight .vc,
   .markdown-body .highlight .vg,
   .markdown-body .highlight .vi,
-  .markdown-body .highlight .vm {
+  .markdown-body .highlight .vm,
+  .markdown-body .highlight .o,
+  .markdown-body .highlight .ow,
+  .markdown-body .highlight .p {
      color: #c9d1d9;
+  }
+  .markdown-body .highlight .m,
+  .markdown-body .highlight .mb,
+  .markdown-body .highlight .mf,
+  .markdown-body .highlight .mh,
+  .markdown-body .highlight .mi,
+  .markdown-body .highlight .il,
+  .markdown-body .highlight .mo,
+  .markdown-body .highlight .mx {
+    color: #a5d6ff;
   }
   .markdown-body .highlight .nc,
   .markdown-body .highlight .nf,
