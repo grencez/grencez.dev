@@ -65,7 +65,7 @@ Boot into the new Alpine LXC and run the following commands.
 echo 'https://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories
 apk update
 apk upgrade
-apk add fuse-overlayfs podman-docker podman-compose
+apk add fuse-overlayfs podman-docker podman-compose iptables
 # Ensure Podman uses fuse-overlayfs.
 sed -i -e 's:.*mount_program *=.*:mount_program = "/usr/bin/fuse-overlayfs":' /etc/containers/storage.conf
 # Always start Podman on boot.
