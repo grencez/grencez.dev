@@ -3,3 +3,7 @@
 /MODULE.bazel.lock
 
 /2021/delicate-bits-of-primes-20210407
+
+/_site
+/.jekyll-cache
+/Gemfile.lock
