@@ -60,6 +60,7 @@
     background-color: #161b22;
   }
 
+  .markdown-body .highlight,
   .markdown-body .highlight pre,
   .markdown-body pre {
     background-color: #161b22;

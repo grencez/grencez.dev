@@ -17,6 +17,18 @@
   user-select: none;
 }
 
+.copy-code-button::after {
+  content: 'Copy';
+}
+
+.copy-code-button.copied::after {
+  content: 'Copied!';
+}
+
+.copy-code-button.error::after {
+  content: 'Error';
+}
+
 .copy-code-button:hover {
   background-color: rgba(0, 0, 0, 0.1);
   color: #24292f;
