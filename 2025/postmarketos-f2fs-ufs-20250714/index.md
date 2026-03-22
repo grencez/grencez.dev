@@ -1,12 +1,14 @@
 ---
 canonical_url: https://grencez.dev/2025/postmarketos-f2fs-ufs-20250714
 date: 2025-07-14
-last_modified_at: 2025-07-14
+last_modified_at: 2026-03-22
 description: How to install PostmarketOS on a Minisforum S100.
 ---
 
 # Installing PostmarketOS on a Minisforum S100
 Date: 2025-07-14
+
+Update: 2026-03-22 -- Added the post-install mkinitfs step.
 
 ## Brief
 In this article, we install PostmarketOS on a Minisforum S100 with the following high-level procedure:
@@ -160,4 +162,11 @@ ssh root-delegate@pmos -- "doas -u root -- dd of=/dev/sda bs=4M conv=fsync" <"${
 PostmarketOS should load from internal storage upon reboot:
 ```shell
 ssh root-delegate@pmos -- "doas -u root -- reboot"
+```
+
+## Post Install
+
+Before updating any packages, add those UFS & F2FS modules that we needed earlier to `/etc/mkinitfs/modules/` so they get added to every future kernel's initramfs:
+```shell
+ssh root-delegate@pmos -- "doas -u root -- printf 'f2fs\nufshcd\nufshcd_pci\n' > /etc/mkinitfs/modules/10-storage.modules"
 ```

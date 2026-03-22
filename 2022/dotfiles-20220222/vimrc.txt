@@ -35,6 +35,8 @@ set foldminlines=5
 set hls "< Turn off highlight after search
 set incsearch "< Incremental searching
 set lazyredraw "< No redraw when executing macros
+set mouse= "< Paste via mouse middle click.
+
 "set nowrap "< No line wrap
 "set wrapscan "< on by default
 set wrap lbr
@@ -246,6 +248,7 @@ function! s:RunShellCommand(cmdline)
 endfunction
 
 autocmd BufRead *.txt set tw=0
+autocmd BufRead *.json5 setlocal ft=javascript
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Get project-specific .vimrc mods!
